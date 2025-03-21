@@ -215,22 +215,22 @@ export default function CookiePolicyPage() {
         <List>
           <ListItem>
             <ListItemText>
-              <strong>Google Chrome:</strong> Menu > Settings > Privacy and security > Cookies and other site data
+              <strong>Google Chrome:</strong> Menu &gt; Settings &gt; Privacy and security &gt; Cookies and other site data
             </ListItemText>
           </ListItem>
           <ListItem>
             <ListItemText>
-              <strong>Mozilla Firefox:</strong> Menu > Options > Privacy & Security > Cookies and Site Data
+              <strong>Mozilla Firefox:</strong> Menu &gt; Options &gt; Privacy & Security &gt; Cookies and Site Data
             </ListItemText>
           </ListItem>
           <ListItem>
             <ListItemText>
-              <strong>Safari:</strong> Preferences > Privacy > Cookies and website data
+              <strong>Safari:</strong> Preferences &gt; Privacy &gt; Cookies and website data
             </ListItemText>
           </ListItem>
           <ListItem>
             <ListItemText>
-              <strong>Microsoft Edge:</strong> Settings > Cookies and site permissions > Cookies and site data
+              <strong>Microsoft Edge:</strong> Settings &gt; Cookies and site permissions &gt; Cookies and site data
             </ListItemText>
           </ListItem>
         </List>

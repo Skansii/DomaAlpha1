@@ -6,7 +6,6 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ThemeRegistry from '../components/ThemeRegistry';
 import { usePathname } from 'next/navigation';
-import { metadata } from './metadata';
 
 const inter = Inter({
   subsets: ["latin"],
