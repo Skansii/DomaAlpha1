@@ -7,47 +7,70 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import DesignServicesOutlinedIcon from '@mui/icons-material/DesignServicesOutlined';
 import CropOriginalOutlinedIcon from '@mui/icons-material/CropOriginalOutlined';
 import HandymanOutlinedIcon from '@mui/icons-material/HandymanOutlined';
+import { useEffect } from 'react';
 
 export default function Home() {
+  // Initialize particles.js when component mounts
+  useEffect(() => {
+    // Load particles.js script dynamically
+    const particlesScript = document.createElement('script');
+    particlesScript.src = '/js/particles.min.js';
+    particlesScript.async = true;
+    particlesScript.onload = () => {
+      // Load and execute the configuration
+      const configScript = document.createElement('script');
+      configScript.src = '/js/particles-config.js';
+      configScript.async = true;
+      document.body.appendChild(configScript);
+    };
+    document.body.appendChild(particlesScript);
+
+    // Clean up function to remove scripts when component unmounts
+    return () => {
+      const scripts = document.querySelectorAll('script[src*="particles"]');
+      scripts.forEach(script => script.remove());
+    };
+  }, []);
+
   const featuredDesigns = [
     {
       id: 1,
-      title: "Modern Kitchen",
-      description: "Sleek design with cutting-edge features and clean lines.",
+      title: "Moderne Küche",
+      description: "Schlichtes Design mit modernsten Funktionen und klaren Linien.",
       image: "https://images.pexels.com/photos/3935349/pexels-photo-3935349.jpeg",
-      alt: "Modern kitchen with white cabinets and island"
+      alt: "Moderne Küche mit weißen Schränken und Insel"
     },
     {
       id: 2,
-      title: "Classic Cabinets",
-      description: "Timeless elegance with quality craftsmanship and attention to detail.",
+      title: "Klassische Schränke",
+      description: "Zeitlose Eleganz mit Qualitätshandwerk und Liebe zum Detail.",
       image: "https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg",
-      alt: "Classic kitchen with wooden cabinets"
+      alt: "Klassische Küche mit Holzschränken"
     },
     {
       id: 3,
-      title: "Contemporary Style",
-      description: "Innovative solutions for the modern home, blending form and function.",
+      title: "Zeitgenössischer Stil",
+      description: "Innovative Lösungen für das moderne Zuhause, die Form und Funktion verbinden.",
       image: "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg",
-      alt: "Contemporary kitchen with minimalist design"
+      alt: "Zeitgenössische Küche mit minimalistischem Design"
     }
   ];
 
   const features = [
     {
       icon: <DesignServicesOutlinedIcon sx={{ fontSize: 40 }} />,
-      title: "Custom Design",
-      description: "Kitchens designed around your specific needs, preferences, and lifestyle"
+      title: "Individuelles Design",
+      description: "Küchen, die auf Ihre spezifischen Bedürfnisse, Vorlieben und Ihren Lebensstil zugeschnitten sind"
     },
     {
       icon: <CropOriginalOutlinedIcon sx={{ fontSize: 40 }} />,
-      title: "Premium Materials",
-      description: "High-quality materials that ensure durability, functionality, and aesthetics"
+      title: "Premium-Materialien",
+      description: "Hochwertige Materialien, die Haltbarkeit, Funktionalität und Ästhetik gewährleisten"
     },
     {
       icon: <HandymanOutlinedIcon sx={{ fontSize: 40 }} />,
-      title: "Expert Installation",
-      description: "Professional installation teams that ensure perfect execution of your design"
+      title: "Fachgerechte Installation",
+      description: "Professionelle Installationsteams, die eine perfekte Umsetzung Ihres Designs gewährleisten"
     }
   ];
 
@@ -57,8 +80,8 @@ export default function Home() {
       <Box 
         sx={{ 
           position: 'relative',
-          height: '85vh',
-          minHeight: '600px',
+          height: 'calc(85vh - 200px)',
+          minHeight: '400px',
           display: 'flex',
           alignItems: 'center',
           color: 'white',
@@ -79,6 +102,19 @@ export default function Home() {
           }
         }}
       >
+        {/* Particles.js container */}
+        <Box
+          id="particles-container"
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 0
+          }}
+        />
+        
         {/* Decorative elements */}
         <Box
           sx={{
@@ -106,17 +142,6 @@ export default function Home() {
         />
         
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
-          <Box 
-            component="img"
-            src="/images/doma_2_Balken_rot.png"
-            alt="DOMA DESIGN Logo"
-            sx={{ 
-              height: { xs: '60px', md: '80px', lg: '100px' }, 
-              width: 'auto',
-              mb: 4,
-              mx: 'auto'
-            }}
-          />
           <Typography 
             variant="h1" 
             sx={{ 
@@ -127,7 +152,7 @@ export default function Home() {
               lineHeight: 1.1
             }}
           >
-            Beautiful Kitchen Solutions
+            Schöne Küchenlösungen
             <Typography 
               component="span" 
               variant="h1"
@@ -138,7 +163,7 @@ export default function Home() {
                 fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem' }
               }}
             >
-              for Modern Living
+              für modernes Wohnen
             </Typography>
           </Typography>
           
@@ -152,8 +177,8 @@ export default function Home() {
               fontWeight: 400
             }}
           >
-            We design and manufacture custom kitchens and cabinets that combine 
-            form, function, and quality craftsmanship.
+            Wir entwerfen und fertigen maßgeschneiderte Küchen und Schränke, die Form, 
+            Funktion und hochwertige Handwerkskunst vereinen.
           </Typography>
           
           <Stack 
@@ -167,7 +192,7 @@ export default function Home() {
               color="primary"
               size="large" 
             >
-              Explore Our Services
+              Unsere Leistungen
             </MaterialButton>
             <MaterialButton 
               href="/contact" 
@@ -175,7 +200,7 @@ export default function Home() {
               color="secondary"
               size="large" 
             >
-              Get In Touch
+              Kontakt aufnehmen
             </MaterialButton>
           </Stack>
         </Container>
@@ -194,7 +219,7 @@ export default function Home() {
                 letterSpacing: 1
               }}
             >
-              Our Solutions
+              Unsere Lösungen
             </Typography>
             <Typography 
               variant="h2" 
@@ -204,7 +229,7 @@ export default function Home() {
                 fontSize: { xs: '2rem', md: '2.75rem' } 
               }}
             >
-              Designed for modern living
+              Designed für modernes Wohnen
             </Typography>
             <Typography 
               variant="h5" 
@@ -216,7 +241,7 @@ export default function Home() {
                 fontWeight: 400
               }}
             >
-              Everything you need for your perfect kitchen
+              Alles, was Sie für Ihre perfekte Küche brauchen
             </Typography>
           </Box>
           
@@ -279,7 +304,7 @@ export default function Home() {
                 letterSpacing: 1
               }}
             >
-              Showcase
+              Galerie
             </Typography>
             <Typography 
               variant="h2" 
@@ -289,7 +314,7 @@ export default function Home() {
                 fontSize: { xs: '2rem', md: '2.75rem' } 
               }}
             >
-              Featured Designs
+              Ausgewählte Designs
             </Typography>
             <Typography 
               variant="h5" 
@@ -301,7 +326,7 @@ export default function Home() {
                 fontWeight: 400
               }}
             >
-              Explore our showcase of custom kitchens designed and built for clients with various preferences and needs.
+              Entdecken Sie unsere Auswahl an maßgeschneiderten Küchen, die für Kunden mit verschiedenen Vorlieben und Bedürfnissen entworfen und gebaut wurden.
             </Typography>
           </Box>
           
@@ -349,7 +374,7 @@ export default function Home() {
                           }
                         }}
                       >
-                        View Details
+                        Details anzeigen
                         <ArrowForwardIcon 
                           className="arrow" 
                           fontSize="small" 
@@ -409,10 +434,10 @@ export default function Home() {
             fontWeight={700} 
             sx={{ fontSize: { xs: '2rem', md: '2.75rem' } }}
           >
-            Ready to create your dream kitchen?
+            Bereit, Ihre Traumküche zu gestalten?
           </Typography>
           <Typography variant="h5" color="primary.lighter" sx={{ mt: 2, fontWeight: 400 }}>
-            Let our design experts help you bring your vision to life.
+            Lassen Sie unsere Designexperten Ihnen helfen, Ihre Vision zum Leben zu erwecken.
           </Typography>
           <Box sx={{ mt: 5 }}>
             <MaterialButton
@@ -421,7 +446,7 @@ export default function Home() {
               color="secondary"
               size="large"
             >
-              Get Started Today
+              Jetzt loslegen
             </MaterialButton>
           </Box>
         </Container>
@@ -440,7 +465,7 @@ export default function Home() {
                 letterSpacing: 1
               }}
             >
-              Testimonials
+              Kundenstimmen
             </Typography>
             <Typography 
               variant="h2" 
@@ -450,7 +475,7 @@ export default function Home() {
                 fontSize: { xs: '2rem', md: '2.75rem' } 
               }}
             >
-              What Our Clients Say
+              Was unsere Kunden sagen
             </Typography>
             <Typography 
               variant="h5" 
@@ -462,28 +487,28 @@ export default function Home() {
                 fontWeight: 400
               }}
             >
-              Hear from some of our satisfied customers about their experience working with Doma Design.
+              Hören Sie von einigen unserer zufriedenen Kunden über ihre Erfahrungen mit Doma Design.
             </Typography>
           </Box>
           
           <Grid container spacing={4}>
             {[
               {
-                quote: "Working with Doma Design was a fantastic experience from start to finish. Their attention to detail and commitment to quality exceeded my expectations.",
+                quote: "Die Zusammenarbeit mit Doma Design war von Anfang bis Ende eine fantastische Erfahrung. Ihre Liebe zum Detail und ihr Engagement für Qualität übertrafen meine Erwartungen.",
                 author: "Sarah Johnson",
-                position: "Homeowner",
+                position: "Hausbesitzerin",
                 avatar: "https://randomuser.me/api/portraits/women/34.jpg"
               },
               {
-                quote: "The team at Doma Design transformed our outdated kitchen into a modern masterpiece. The craftsmanship is exceptional and the design is exactly what we wanted.",
+                quote: "Das Team von Doma Design hat unsere veraltete Küche in ein modernes Meisterwerk verwandelt. Die Handwerkskunst ist außergewöhnlich und das Design ist genau das, was wir wollten.",
                 author: "Michael Chen",
-                position: "Property Developer",
+                position: "Immobilienentwickler",
                 avatar: "https://randomuser.me/api/portraits/men/32.jpg"
               },
               {
-                quote: "I was impressed by how well they listened to our needs and delivered a kitchen that perfectly fits our lifestyle. The quality of the cabinets is outstanding.",
+                quote: "Ich war beeindruckt davon, wie gut sie auf unsere Bedürfnisse eingegangen sind und eine Küche geliefert haben, die perfekt zu unserem Lebensstil passt. Die Qualität der Schränke ist hervorragend.",
                 author: "Emma Garcia",
-                position: "Interior Designer",
+                position: "Innenarchitektin",
                 avatar: "https://randomuser.me/api/portraits/women/68.jpg"
               }
             ].map((testimonial, index) => (
