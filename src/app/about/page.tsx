@@ -39,19 +39,19 @@ export default function About() {
       name: 'Jane Smith',
       role: 'Founder & Lead Designer',
       bio: 'With over 15 years of experience in kitchen design, Jane has a passion for creating spaces that are both beautiful and functional.',
-      image: 'https://images.pexels.com/photos/5792641/pexels-photo-5792641.jpeg'
+      image: '/images/about/jane-smith.jpg'
     },
     {
       name: 'Michael Chen',
       role: 'Head of Production',
       bio: 'Michael ensures that every cabinet and component we produce meets our exacting standards for quality and craftsmanship.',
-      image: 'https://images.pexels.com/photos/8961001/pexels-photo-8961001.jpeg'
+      image: '/images/about/michael-chen.jpg'
     },
     {
       name: 'Sarah Johnson',
       role: 'Client Experience Manager',
       bio: 'Sarah works directly with our clients to understand their needs and ensure their vision becomes reality.',
-      image: 'https://images.pexels.com/photos/5538624/pexels-photo-5538624.jpeg'
+      image: '/images/about/sarah-johnson.jpg'
     }
   ];
 
@@ -88,7 +88,7 @@ export default function About() {
       >
         <Box
           component="img"
-          src="https://images.pexels.com/photos/6958658/pexels-photo-6958658.jpeg"
+          src="/images/about/hero-kitchen.jpg"
           alt="Kitchen design studio"
           sx={{
             position: 'absolute',
@@ -163,7 +163,7 @@ export default function About() {
                 >
                   <Box
                     component="img"
-                    src="https://images.pexels.com/photos/6707628/pexels-photo-6707628.jpeg"
+                    src="/images/about/team-working.jpg"
                     alt="Kitchen designers at work"
                     sx={{
                       position: 'absolute',
