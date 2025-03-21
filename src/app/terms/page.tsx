@@ -65,18 +65,18 @@ export default function TermsPage() {
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
           <GavelIcon sx={{ mr: 2, color: 'primary.main', fontSize: 28 }} />
           <Typography variant="h5" component="h2">
-            Agreement Overview
+            Vertragsübersicht
           </Typography>
         </Box>
         <Typography variant="body1" paragraph>
-          These Terms and Conditions ("Terms") govern your relationship with DOMA Design ("Company", "we", "us", or "our") 
-          and your use of our website, applications, products, and services (collectively, the "Services"). By using our Services, 
-          you acknowledge that you have read, understood, and agree to be bound by these Terms.
+          Diese Allgemeinen Geschäftsbedingungen ("AGB") regeln Ihre Beziehung mit DOMA Design ("Unternehmen", "wir", "uns" oder "unser") 
+          und Ihre Nutzung unserer Website, Anwendungen, Produkte und Dienstleistungen (zusammen die "Dienste"). Durch die Nutzung unserer Dienste 
+          erkennen Sie an, dass Sie diese AGB gelesen und verstanden haben und damit einverstanden sind, an diese gebunden zu sein.
         </Typography>
         <Typography variant="body1" paragraph>
-          We may modify these Terms at any time. If we do this, we will post the changed Terms on this page and will indicate at the 
-          top of this page the date the Terms were last revised. You understand and agree that your continued use of the Service after 
-          we have made any such changes constitutes your acceptance of the new Terms.
+          Wir können diese AGB jederzeit ändern. Wenn wir dies tun, werden wir die geänderten AGB auf dieser Seite veröffentlichen und oben 
+          auf dieser Seite das Datum angeben, an dem die AGB zuletzt überarbeitet wurden. Sie verstehen und stimmen zu, dass Ihre weitere 
+          Nutzung des Dienstes, nachdem wir solche Änderungen vorgenommen haben, Ihre Annahme der neuen AGB darstellt.
         </Typography>
       </Paper>
 
@@ -93,19 +93,19 @@ export default function TermsPage() {
           >
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <PrivacyTipIcon sx={{ mr: 2, color: 'primary.main' }} />
-              <Typography variant="h6">1. Use of Services</Typography>
+              <Typography variant="h6">1. Nutzung der Dienste</Typography>
             </Box>
           </AccordionSummary>
           <AccordionDetails>
             <Typography variant="body1" paragraph>
-              Our Services are intended for personal and commercial use related to kitchen and cabinet design, purchase, 
-              and installation. You may not use our Services for any illegal or unauthorized purpose nor may you violate 
-              any laws in your jurisdiction.
+              Unsere Dienste sind für den persönlichen und gewerblichen Gebrauch im Zusammenhang mit Küchen- und Schrankdesign, 
+              -kauf und -installation bestimmt. Sie dürfen unsere Dienste nicht für illegale oder unbefugte Zwecke nutzen oder 
+              gegen Gesetze in Ihrer Rechtsordnung verstoßen.
             </Typography>
             <Typography variant="body1" paragraph>
-              You are responsible for maintaining the confidentiality of your account and password and for restricting 
-              access to your computer, and you agree to accept responsibility for all activities that occur under your 
-              account or password.
+              Sie sind für die Wahrung der Vertraulichkeit Ihres Kontos und Passworts sowie für die Beschränkung des Zugangs 
+              zu Ihrem Computer verantwortlich, und Sie erklären sich damit einverstanden, die Verantwortung für alle Aktivitäten 
+              zu übernehmen, die unter Ihrem Konto oder Passwort stattfinden.
             </Typography>
             <List>
               <ListItem>
@@ -113,7 +113,7 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  You may use our design tools to create kitchen and cabinet layouts for your personal or professional projects.
+                  Sie können unsere Design-Tools verwenden, um Küchen- und Schranklayouts für Ihre persönlichen oder beruflichen Projekte zu erstellen.
                 </ListItemText>
               </ListItem>
               <ListItem>
@@ -121,7 +121,7 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  You may save, print, and share designs created using our design tools for non-commercial purposes.
+                  Sie können Designs, die mit unseren Design-Tools erstellt wurden, für nicht-kommerzielle Zwecke speichern, drucken und teilen.
                 </ListItemText>
               </ListItem>
               <ListItem>
@@ -129,13 +129,13 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  You may request quotes, place orders, and track your purchases through our Services.
+                  Sie können über unsere Dienste Angebote anfordern, Bestellungen aufgeben und Ihre Einkäufe verfolgen.
                 </ListItemText>
               </ListItem>
             </List>
             <Typography variant="body1" paragraph>
-              We reserve the right to refuse service, terminate accounts, remove or edit content, or cancel orders at 
-              our sole discretion.
+              Wir behalten uns das Recht vor, nach eigenem Ermessen den Service zu verweigern, Konten zu kündigen, Inhalte zu entfernen 
+              oder zu bearbeiten oder Bestellungen zu stornieren.
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -152,21 +152,21 @@ export default function TermsPage() {
           >
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <VerifiedUserIcon sx={{ mr: 2, color: 'primary.main' }} />
-              <Typography variant="h6">2. Intellectual Property Rights</Typography>
+              <Typography variant="h6">2. Geistige Eigentumsrechte</Typography>
             </Box>
           </AccordionSummary>
           <AccordionDetails>
             <Typography variant="body1" paragraph>
-              The Service and its original content, features, and functionality are and will remain the exclusive property 
-              of DOMA Design and its licensors. The Service is protected by copyright, trademark, and other laws of both 
-              the United States and foreign countries.
+              Der Dienst und seine ursprünglichen Inhalte, Funktionen und Funktionalität sind und bleiben das ausschließliche 
+              Eigentum von DOMA Design und seinen Lizenzgebern. Der Dienst ist durch Urheberrechte, Markenrechte und andere 
+              Gesetze der Vereinigten Staaten und anderer Länder geschützt.
             </Typography>
             <Typography variant="body1" paragraph>
-              Our trademarks and trade dress may not be used in connection with any product or service without the prior 
-              written consent of DOMA Design.
+              Unsere Marken und unsere Handelsaufmachung dürfen nicht im Zusammenhang mit Produkten oder Dienstleistungen 
+              ohne vorherige schriftliche Zustimmung von DOMA Design verwendet werden.
             </Typography>
             <Typography variant="body1" paragraph>
-              Designs created using our design tools are subject to the following ownership terms:
+              Designs, die mit unseren Design-Tools erstellt wurden, unterliegen den folgenden Eigentumsbestimmungen:
             </Typography>
             <List>
               <ListItem>
@@ -174,7 +174,7 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  You retain ownership of the specific design layouts you create using our tools.
+                  Sie behalten das Eigentum an den spezifischen Design-Layouts, die Sie mit unseren Tools erstellen.
                 </ListItemText>
               </ListItem>
               <ListItem>
@@ -182,7 +182,7 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  DOMA Design retains ownership of all templates, design elements, and software functionality used to create designs.
+                  DOMA Design behält das Eigentum an allen Vorlagen, Designelementen und Softwarefunktionen, die zum Erstellen von Designs verwendet werden.
                 </ListItemText>
               </ListItem>
               <ListItem>
@@ -190,8 +190,8 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  You grant DOMA Design a non-exclusive, royalty-free license to use designs created with our tools for 
-                  marketing, training, and improvement of our Services, with attribution where appropriate.
+                  Sie gewähren DOMA Design eine nicht-exklusive, lizenzgebührenfreie Lizenz zur Verwendung von mit unseren Tools erstellten Designs 
+                  für Marketing, Schulung und Verbesserung unserer Dienste, gegebenenfalls mit entsprechender Zuschreibung.
                 </ListItemText>
               </ListItem>
             </List>
@@ -210,17 +210,18 @@ export default function TermsPage() {
           >
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <PaymentIcon sx={{ mr: 2, color: 'primary.main' }} />
-              <Typography variant="h6">3. Pricing and Payment</Typography>
+              <Typography variant="h6">3. Preisgestaltung und Zahlung</Typography>
             </Box>
           </AccordionSummary>
           <AccordionDetails>
             <Typography variant="body1" paragraph>
-              All prices for products and services are shown in US dollars and are subject to change without notice. 
-              While we strive to provide accurate pricing information, pricing errors may occur. We reserve the right 
-              to correct any errors and to change or update information at any time without prior notice.
+              Alle Preise für Produkte und Dienstleistungen werden in US-Dollar angezeigt und können ohne vorherige Ankündigung 
+              geändert werden. Obwohl wir uns bemühen, genaue Preisinformationen bereitzustellen, können Preisfehler auftreten. 
+              Wir behalten uns das Recht vor, Fehler zu korrigieren und Informationen jederzeit ohne vorherige Ankündigung zu 
+              ändern oder zu aktualisieren.
             </Typography>
             <Typography variant="body1" paragraph>
-              Payment terms for products and services:
+              Zahlungsbedingungen für Produkte und Dienstleistungen:
             </Typography>
             <List>
               <ListItem>
@@ -228,7 +229,7 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  For custom cabinet orders, a 50% deposit is required to begin production.
+                  Für Sonderanfertigungen von Schränken ist eine Anzahlung von 50% erforderlich, um mit der Produktion zu beginnen.
                 </ListItemText>
               </ListItem>
               <ListItem>
@@ -236,7 +237,7 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  The remaining balance is due prior to shipping or delivery.
+                  Der Restbetrag ist vor dem Versand oder der Lieferung zu zahlen.
                 </ListItemText>
               </ListItem>
               <ListItem>
@@ -244,7 +245,8 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  For design services, payment is due at the time services are rendered unless otherwise specified in a written agreement.
+                  Für Designdienstleistungen ist die Zahlung zum Zeitpunkt der Erbringung der Dienstleistungen fällig, sofern in einer 
+                  schriftlichen Vereinbarung nichts anderes angegeben ist.
                 </ListItemText>
               </ListItem>
               <ListItem>
@@ -252,14 +254,14 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  Design fees may be credited toward cabinet purchases as specified in your agreement.
+                  Designgebühren können gemäß Ihrer Vereinbarung auf Schrankkäufe angerechnet werden.
                 </ListItemText>
               </ListItem>
             </List>
             <Typography variant="body1" paragraph>
-              We accept payment via credit card, bank transfer, and other methods as specified at the time of purchase. 
-              By providing a payment method, you represent that you are authorized to use the payment method and authorize 
-              us to charge your payment method for all orders placed.
+              Wir akzeptieren Zahlungen per Kreditkarte, Banküberweisung und andere zum Zeitpunkt des Kaufs angegebene Methoden. 
+              Indem Sie eine Zahlungsmethode angeben, bestätigen Sie, dass Sie zur Nutzung der Zahlungsmethode berechtigt sind, 
+              und autorisieren uns, Ihre Zahlungsmethode für alle getätigten Bestellungen zu belasten.
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -276,17 +278,17 @@ export default function TermsPage() {
           >
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <LocalShippingIcon sx={{ mr: 2, color: 'primary.main' }} />
-              <Typography variant="h6">4. Shipping and Delivery</Typography>
+              <Typography variant="h6">4. Versand und Lieferung</Typography>
             </Box>
           </AccordionSummary>
           <AccordionDetails>
             <Typography variant="body1" paragraph>
-              Delivery times are estimates only and commence from the date of order confirmation. DOMA Design is not 
-              responsible for delays in delivery that are beyond our control, including but not limited to delays caused 
-              by shipping carriers, manufacturer delays, or natural disasters.
+              Lieferzeiten sind nur Schätzungen und beginnen ab dem Datum der Auftragsbestätigung. DOMA Design ist nicht 
+              verantwortlich für Lieferverzögerungen, die außerhalb unserer Kontrolle liegen, einschließlich, aber nicht 
+              beschränkt auf Verzögerungen durch Versandunternehmen, Herstellerverzögerungen oder Naturkatastrophen.
             </Typography>
             <Typography variant="body1" paragraph>
-              Shipping and delivery terms:
+              Versand- und Lieferbedingungen:
             </Typography>
             <List>
               <ListItem>
@@ -294,8 +296,8 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  Risk of loss and title for items purchased from our website pass to you upon delivery of the items to 
-                  the carrier.
+                  Das Verlustrisiko und das Eigentumsrecht für Artikel, die von unserer Website gekauft wurden, gehen bei Übergabe 
+                  der Artikel an den Spediteur auf Sie über.
                 </ListItemText>
               </ListItem>
               <ListItem>
@@ -303,8 +305,8 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  You are responsible for inspecting all products upon delivery and noting any damage or discrepancies 
-                  on the delivery receipt.
+                  Sie sind dafür verantwortlich, alle Produkte bei der Lieferung zu inspizieren und eventuelle Schäden oder 
+                  Unstimmigkeiten auf dem Lieferschein zu vermerken.
                 </ListItemText>
               </ListItem>
               <ListItem>
@@ -312,8 +314,8 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  Any damage or discrepancies not noted on the delivery receipt must be reported to DOMA Design within 
-                  48 hours of delivery.
+                  Schäden oder Unstimmigkeiten, die nicht auf dem Lieferschein vermerkt sind, müssen DOMA Design innerhalb 
+                  von 48 Stunden nach der Lieferung gemeldet werden.
                 </ListItemText>
               </ListItem>
               <ListItem>
@@ -321,7 +323,7 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  Delivery to remote locations may incur additional fees.
+                  Für Lieferungen an abgelegene Orte können zusätzliche Gebühren anfallen.
                 </ListItemText>
               </ListItem>
             </List>
@@ -340,16 +342,17 @@ export default function TermsPage() {
           >
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <GavelIcon sx={{ mr: 2, color: 'primary.main' }} />
-              <Typography variant="h6">5. Warranty and Returns</Typography>
+              <Typography variant="h6">5. Garantie und Rücksendungen</Typography>
             </Box>
           </AccordionSummary>
           <AccordionDetails>
             <Typography variant="body1" paragraph>
-              DOMA Design products come with a limited lifetime warranty for residential use and a 10-year warranty for 
-              commercial use, covering defects in material and workmanship under normal use and maintenance.
+              DOMA Design-Produkte werden mit einer eingeschränkten lebenslangen Garantie für den privaten Gebrauch und einer 
+              10-jährigen Garantie für den gewerblichen Gebrauch geliefert, die Material- und Verarbeitungsfehler bei normaler 
+              Nutzung und Wartung abdeckt.
             </Typography>
             <Typography variant="body1" paragraph>
-              Warranty and return terms:
+              Garantie- und Rückgabebedingungen:
             </Typography>
             <List>
               <ListItem>
@@ -357,7 +360,7 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  Custom-made products cannot be returned unless they are defective or damaged.
+                  Maßgefertigte Produkte können nicht zurückgegeben werden, es sei denn, sie sind defekt oder beschädigt.
                 </ListItemText>
               </ListItem>
               <ListItem>
@@ -365,8 +368,8 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  Stock items in new, unused condition may be returned within 30 days with original packaging and receipt, 
-                  subject to a restocking fee.
+                  Lagerartikel in neuem, unbenutztem Zustand können innerhalb von 30 Tagen mit Originalverpackung und Quittung 
+                  zurückgegeben werden, vorbehaltlich einer Wiedereinlagerungsgebühr.
                 </ListItemText>
               </ListItem>
               <ListItem>
@@ -374,8 +377,8 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  Warranty claims must be submitted with proof of purchase, a description of the defect, and photos of the 
-                  defective product.
+                  Garantieansprüche müssen mit Kaufnachweis, einer Beschreibung des Defekts und Fotos des defekten Produkts 
+                  eingereicht werden.
                 </ListItemText>
               </ListItem>
               <ListItem>
@@ -383,14 +386,15 @@ export default function TermsPage() {
                   <CheckCircleIcon color="primary" fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>
-                  The warranty does not cover damage resulting from improper installation, misuse, abuse, neglect, or 
-                  exposure to extreme temperature or humidity conditions.
+                  Die Garantie deckt keine Schäden ab, die durch unsachgemäße Installation, Missbrauch, Vernachlässigung oder 
+                  Exposition gegenüber extremen Temperatur- oder Feuchtigkeitsbedingungen entstehen.
                 </ListItemText>
               </ListItem>
             </List>
             <Typography variant="body1" paragraph>
-              DOMA Design's liability is limited to repair or replacement of the defective product, at our discretion. 
-              We are not responsible for installation, removal, or reinstallation costs associated with warranty claims.
+              Die Haftung von DOMA Design beschränkt sich auf die Reparatur oder den Ersatz des defekten Produkts nach unserem 
+              Ermessen. Wir sind nicht verantwortlich für Installations-, Ausbau- oder Wiedereinbaukosten im Zusammenhang mit 
+              Garantieansprüchen.
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -407,28 +411,28 @@ export default function TermsPage() {
           >
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <GavelIcon sx={{ mr: 2, color: 'primary.main' }} />
-              <Typography variant="h6">6. Limitation of Liability</Typography>
+              <Typography variant="h6">6. Haftungsbeschränkung</Typography>
             </Box>
           </AccordionSummary>
           <AccordionDetails>
             <Typography variant="body1" paragraph>
-              IN NO EVENT SHALL DOMA DESIGN, ITS OFFICERS, DIRECTORS, EMPLOYEES, OR AGENTS, BE LIABLE TO YOU FOR ANY 
-              DIRECT, INDIRECT, INCIDENTAL, SPECIAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES WHATSOEVER RESULTING FROM ANY 
-              (I) ERRORS, MISTAKES, OR INACCURACIES OF CONTENT, (II) PERSONAL INJURY OR PROPERTY DAMAGE, OF ANY NATURE 
-              WHATSOEVER, RESULTING FROM YOUR ACCESS TO AND USE OF OUR SERVICE, (III) ANY UNAUTHORIZED ACCESS TO OR USE 
-              OF OUR SECURE SERVERS AND/OR ANY AND ALL PERSONAL INFORMATION AND/OR FINANCIAL INFORMATION STORED THEREIN, 
-              (IV) ANY INTERRUPTION OR CESSATION OF TRANSMISSION TO OR FROM OUR SERVICE, (V) ANY BUGS, VIRUSES, TROJAN 
-              HORSES, OR THE LIKE, WHICH MAY BE TRANSMITTED TO OR THROUGH OUR SERVICE BY ANY THIRD PARTY, AND/OR (VI) ANY 
-              ERRORS OR OMISSIONS IN ANY CONTENT OR FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF YOUR USE 
-              OF ANY CONTENT POSTED, EMAILED, TRANSMITTED, OR OTHERWISE MADE AVAILABLE VIA THE SERVICE, WHETHER BASED ON 
-              WARRANTY, CONTRACT, TORT, OR ANY OTHER LEGAL THEORY, AND WHETHER OR NOT THE COMPANY IS ADVISED OF THE 
-              POSSIBILITY OF SUCH DAMAGES.
+              IN KEINEM FALL HAFTEN DOMA DESIGN, SEINE FÜHRUNGSKRÄFTE, DIREKTOREN, MITARBEITER ODER VERTRETER IHNEN GEGENÜBER 
+              FÜR DIREKTE, INDIREKTE, ZUFÄLLIGE, BESONDERE, STRAFBARE ODER FOLGESCHÄDEN, DIE SICH AUS (I) FEHLERN, IRRTÜMERN 
+              ODER UNGENAUIGKEITEN VON INHALTEN, (II) PERSONEN- ODER SACHSCHÄDEN JEGLICHER ART, DIE SICH AUS IHREM ZUGANG ZU 
+              UND DER NUTZUNG UNSERES DIENSTES ERGEBEN, (III) UNBEFUGTEM ZUGRIFF AUF ODER NUTZUNG UNSERER SICHEREN SERVER 
+              UND/ODER ALLER DARIN GESPEICHERTEN PERSÖNLICHEN INFORMATIONEN UND/ODER FINANZIELLEN INFORMATIONEN, (IV) JEDER 
+              UNTERBRECHUNG ODER BEENDIGUNG DER ÜBERTRAGUNG ZU ODER VON UNSEREM DIENST, (V) BUGS, VIREN, TROJANISCHEN PFERDEN 
+              ODER ÄHNLICHEM, DIE VON DRITTEN AN ODER DURCH UNSEREN DIENST ÜBERTRAGEN WERDEN KÖNNEN, UND/ODER (VI) FEHLERN ODER 
+              AUSLASSUNGEN IN INHALTEN ODER FÜR VERLUSTE ODER SCHÄDEN JEGLICHER ART, DIE INFOLGE IHRER NUTZUNG VON INHALTEN 
+              ENTSTEHEN, DIE ÜBER DEN DIENST GEPOSTET, PER E-MAIL VERSANDT, ÜBERTRAGEN ODER ANDERWEITIG VERFÜGBAR GEMACHT WERDEN, 
+              UNABHÄNGIG DAVON, OB SIE AUF GARANTIE, VERTRAG, UNERLAUBTER HANDLUNG ODER EINER ANDEREN RECHTSTHEORIE BASIEREN UND 
+              OB DAS UNTERNEHMEN ÜBER DIE MÖGLICHKEIT SOLCHER SCHÄDEN INFORMIERT WURDE ODER NICHT.
             </Typography>
             <Typography variant="body1" paragraph>
-              THE FOREGOING LIMITATION OF LIABILITY SHALL APPLY TO THE FULLEST EXTENT PERMITTED BY LAW IN THE APPLICABLE 
-              JURISDICTION. YOU SPECIFICALLY ACKNOWLEDGE THAT DOMA DESIGN SHALL NOT BE LIABLE FOR USER SUBMISSIONS OR THE 
-              DEFAMATORY, OFFENSIVE, OR ILLEGAL CONDUCT OF ANY THIRD PARTY AND THAT THE RISK OF HARM OR DAMAGE FROM THE 
-              FOREGOING RESTS ENTIRELY WITH YOU.
+              DIE VORSTEHENDE HAFTUNGSBESCHRÄNKUNG GILT IM VOLLEN GESETZLICH ZULÄSSIGEN UMFANG IN DER ANWENDBAREN 
+              GERICHTSBARKEIT. SIE ERKENNEN INSBESONDERE AN, DASS DOMA DESIGN NICHT FÜR BENUTZEREINREICHUNGEN ODER 
+              DIFFAMIERENDES, BELEIDIGENDES ODER ILLEGALES VERHALTEN VON DRITTEN HAFTET UND DASS DAS RISIKO VON SCHÄDEN 
+              ODER VERLETZUNGEN AUS DEM VORGENANNTEN AUSSCHLIESSLICH BEI IHNEN LIEGT.
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -445,28 +449,29 @@ export default function TermsPage() {
           >
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <GavelIcon sx={{ mr: 2, color: 'primary.main' }} />
-              <Typography variant="h6">7. Governing Law and Dispute Resolution</Typography>
+              <Typography variant="h6">7. Geltendes Recht und Streitbeilegung</Typography>
             </Box>
           </AccordionSummary>
           <AccordionDetails>
             <Typography variant="body1" paragraph>
-              These Terms shall be governed and construed in accordance with the laws of the State of Oregon, United States, 
-              without regard to its conflict of law provisions.
+              Diese Bedingungen unterliegen den Gesetzen des Bundesstaates Oregon, Vereinigte Staaten, und werden in 
+              Übereinstimmung mit diesen ausgelegt, ohne Berücksichtigung von Kollisionsnormen.
             </Typography>
             <Typography variant="body1" paragraph>
-              Any dispute arising from or relating to the subject matter of these Terms shall be finally settled by arbitration 
-              in Portland, Oregon, using the English language in accordance with the Arbitration Rules and Procedures of 
-              the Judicial Arbitration and Mediation Services, Inc. (JAMS) then in effect, by one commercial arbitrator with 
-              substantial experience in resolving intellectual property and commercial contract disputes, who shall be selected 
-              from the appropriate list of JAMS arbitrators in accordance with the Arbitration Rules and Procedures of JAMS.
+              Jede Streitigkeit, die sich aus oder im Zusammenhang mit dem Gegenstand dieser Bedingungen ergibt, wird 
+              endgültig durch ein Schiedsverfahren in Portland, Oregon, unter Verwendung der englischen Sprache gemäß 
+              den Schiedsregeln und -verfahren der Judicial Arbitration and Mediation Services, Inc. (JAMS) in der 
+              jeweils gültigen Fassung, durch einen Handelsschiedsrichter mit umfassender Erfahrung in der Beilegung 
+              von Streitigkeiten über geistiges Eigentum und Handelsverträge beigelegt, der aus der entsprechenden 
+              Liste der JAMS-Schiedsrichter gemäß den Schiedsregeln und -verfahren von JAMS ausgewählt wird.
             </Typography>
             <Typography variant="body1" paragraph>
-              The prevailing party in any arbitration or litigation shall be entitled to recover its attorneys' fees and costs 
-              from the non-prevailing party.
+              Die obsiegende Partei in einem Schiedsverfahren oder Rechtsstreit hat Anspruch auf Erstattung ihrer 
+              Anwaltskosten und -gebühren durch die unterlegene Partei.
             </Typography>
             <Typography variant="body1" paragraph>
-              Notwithstanding the foregoing, we may seek injunctive or other equitable relief to protect our intellectual 
-              property rights in any court of competent jurisdiction.
+              Ungeachtet des Vorstehenden können wir einstweilige oder andere billige Rechtsbehelfe zum Schutz unserer 
+              geistigen Eigentumsrechte vor jedem zuständigen Gericht beantragen.
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -483,31 +488,32 @@ export default function TermsPage() {
           >
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <GavelIcon sx={{ mr: 2, color: 'primary.main' }} />
-              <Typography variant="h6">8. Miscellaneous Provisions</Typography>
+              <Typography variant="h6">8. Verschiedene Bestimmungen</Typography>
             </Box>
           </AccordionSummary>
           <AccordionDetails>
             <Typography variant="body1" paragraph>
-              <strong>Entire Agreement:</strong> These Terms constitute the entire agreement between you and DOMA Design 
-              regarding the use of the Service, superseding any prior agreements between you and DOMA Design relating to 
-              your use of the Service.
+              <strong>Gesamte Vereinbarung:</strong> Diese Bedingungen stellen die gesamte Vereinbarung zwischen Ihnen und DOMA Design 
+              bezüglich der Nutzung des Dienstes dar und ersetzen alle früheren Vereinbarungen zwischen Ihnen und DOMA Design in Bezug 
+              auf Ihre Nutzung des Dienstes.
             </Typography>
             <Typography variant="body1" paragraph>
-              <strong>Waiver and Severability:</strong> The failure of DOMA Design to exercise or enforce any right or 
-              provision of these Terms shall not constitute a waiver of such right or provision. If any provision of these 
-              Terms is found by a court of competent jurisdiction to be invalid, the parties nevertheless agree that the court 
-              should endeavor to give effect to the parties' intentions as reflected in the provision, and the other provisions 
-              of these Terms remain in full force and effect.
+              <strong>Verzicht und Salvatorische Klausel:</strong> Das Versäumnis von DOMA Design, ein Recht oder eine Bestimmung 
+              dieser Bedingungen auszuüben oder durchzusetzen, stellt keinen Verzicht auf dieses Recht oder diese Bestimmung dar. 
+              Sollte eine Bestimmung dieser Bedingungen von einem zuständigen Gericht für ungültig befunden werden, vereinbaren die 
+              Parteien dennoch, dass das Gericht sich bemühen sollte, den Absichten der Parteien, wie sie in der Bestimmung zum 
+              Ausdruck kommen, Wirkung zu verleihen, und die anderen Bestimmungen dieser Bedingungen bleiben in vollem Umfang in Kraft.
             </Typography>
             <Typography variant="body1" paragraph>
-              <strong>Assignment:</strong> These Terms, and any rights and licenses granted hereunder, may not be transferred 
-              or assigned by you, but may be assigned by DOMA Design without restriction. Any assignment attempted to be made 
-              in violation of these Terms shall be void.
+              <strong>Abtretung:</strong> Diese Bedingungen und alle hierin gewährten Rechte und Lizenzen dürfen von Ihnen nicht 
+              übertragen oder abgetreten werden, können aber von DOMA Design ohne Einschränkung abgetreten werden. Jede versuchte 
+              Abtretung unter Verletzung dieser Bedingungen ist nichtig.
             </Typography>
             <Typography variant="body1" paragraph>
-              <strong>Notices:</strong> Any notices or other communications provided by DOMA Design under these Terms, including 
-              those regarding modifications to these Terms, will be given: (i) via email; or (ii) by posting to the Service. 
-              For notices made by e-mail, the date of receipt will be deemed the date on which such notice is transmitted.
+              <strong>Mitteilungen:</strong> Alle Mitteilungen oder sonstigen Kommunikationen, die von DOMA Design im Rahmen dieser 
+              Bedingungen bereitgestellt werden, einschließlich solcher, die Änderungen dieser Bedingungen betreffen, erfolgen: 
+              (i) per E-Mail oder (ii) durch Veröffentlichung auf dem Dienst. Bei Mitteilungen per E-Mail gilt das Datum des Eingangs 
+              als das Datum, an dem diese Mitteilung übermittelt wird.
             </Typography>
           </AccordionDetails>
         </Accordion>

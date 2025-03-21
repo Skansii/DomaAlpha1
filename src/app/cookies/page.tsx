@@ -107,7 +107,7 @@ export default function CookiePolicyPage() {
           </Typography>
         </Box>
         <Typography variant="body1" paragraph>
-          This Cookie Policy explains how DOMA Design ("we", "us", or "our") uses cookies and similar technologies 
+          This Cookie Policy explains how DOMA Design (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) uses cookies and similar technologies 
           to recognize and remember you when you visit our website. It explains what these technologies are, why 
           we use them, and your rights to control our use of them.
         </Typography>
