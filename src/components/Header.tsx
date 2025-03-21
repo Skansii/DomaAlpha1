@@ -82,9 +82,7 @@ const Header = () => {
   const navItems = [
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
-    // Pricing replaced with Doma Digital mega menu
     { label: 'Features', href: '/features' },
-    { label: 'Contact', href: '/contact' }
   ];
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -266,6 +264,22 @@ const Header = () => {
                   </Paper>
                 )}
               </Box>
+              
+              {/* Contact Button */}
+              <Button 
+                component={Link} 
+                href="/contact"
+                sx={{ 
+                  color: 'text.secondary', 
+                  mx: 1,
+                  '&:hover': {
+                    color: 'primary.main',
+                    backgroundColor: 'transparent',
+                  }
+                }}
+              >
+                Contact
+              </Button>
             </Box>
 
             {/* Language Selection - Desktop */}
@@ -427,6 +441,20 @@ const Header = () => {
             }}
           >
             <ListItemText primary="Doma Digital" />
+          </ListItem>
+          
+          {/* Contact in Mobile Menu */}
+          <ListItem 
+            disablePadding
+            component={Link}
+            href="/contact"
+            onClick={toggleDrawer(false)}
+            sx={{ 
+              py: 1.5,
+              '&:hover': { color: 'primary.main' }
+            }}
+          >
+            <ListItemText primary="Contact" />
           </ListItem>
         </List>
         
