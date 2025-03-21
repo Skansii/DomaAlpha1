@@ -28,7 +28,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 const blogPosts = [
   {
     id: 'kitchen-trends-2023',
-    title: 'Kitchen Trends 2023: What's Hot and What's Not',
+    title: 'Kitchen Trends 2023: What\'s Hot and What\'s Not',
     excerpt: 'Explore the latest kitchen design trends for 2023, from innovative storage solutions to trending color palettes and cabinet styles.',
     image: '/images/blog/kitchen-trends-2023.jpg',
     author: 'Sarah Johnson',
@@ -39,7 +39,7 @@ const blogPosts = [
   {
     id: 'sustainable-materials',
     title: 'Sustainable Materials for Eco-Friendly Kitchens',
-    excerpt: 'Discover environmentally-friendly materials for your kitchen renovation that don't compromise on style or functionality.',
+    excerpt: 'Discover environmentally-friendly materials for your kitchen renovation that don\'t compromise on style or functionality.',
     image: '/images/blog/sustainable-materials.jpg',
     author: 'Michael Chen',
     date: 'April 28, 2023',
