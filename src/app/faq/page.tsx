@@ -129,7 +129,7 @@ const faqCategories = [
       },
       {
         question: 'How long does it take to receive my order?',
-        answer: 'Standard production time for DOMA Design cabinetry is 6-8 weeks from order confirmation. Custom or complex orders may require additional time. After production, shipping typically takes 1-2 weeks depending on your location. During the ordering process, we'll provide you with a more specific timeline based on your project's requirements and our current production schedule.'
+        answer: 'Standard production time for DOMA Design cabinetry is 6-8 weeks from order confirmation. Custom or complex orders may require additional time. After production, shipping typically takes 1-2 weeks depending on your location. During the ordering process, we\'ll provide you with a more specific timeline based on your project\'s requirements and our current production schedule.'
       },
       {
         question: 'Do you offer expedited production?',
