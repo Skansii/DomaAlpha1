@@ -78,7 +78,7 @@ const jobs = [
     type: 'Full-time',
     description: 'Design and improve the user experience for our digital kitchen design tools, customer portal, and e-commerce platforms.',
     requirements: [
-      'Bachelor's degree in Design, HCI, or related field',
+      'Bachelor\'s degree in Design, HCI, or related field',
       'Portfolio demonstrating user-centered design approach',
       'Experience with design tools (Figma, Adobe XD)',
       'Understanding of user research and testing methodologies',
@@ -126,8 +126,8 @@ export default function CareersPage() {
         <Grid item xs={12} md={6}>
           <Box sx={{ position: 'relative', height: { xs: 300, md: 400 }, width: '100%' }}>
             <Image
-              src="/images/team-collaboration.jpg"
-              alt="DOMA Design team collaborating"
+              src="/images/careers/professional-team.jpg"
+              alt="DOMA Design professional team"
               fill
               style={{ objectFit: 'cover', borderRadius: '8px' }}
             />

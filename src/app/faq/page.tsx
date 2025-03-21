@@ -87,7 +87,7 @@ const faqCategories = [
       },
       {
         question: 'How do I get a quote for my project?',
-        answer: 'You can request a quote by filling out the quote request form on our website, by emailing info@domadesign.com, or by calling our customer service at 1-800-555-1234. To provide you with the most accurate quote, we'll need details about your project, including measurements, desired materials, and any specific requirements.'
+        answer: 'You can request a quote by filling out the quote request form on our website, by emailing info@domadesign.com, or by calling our customer service at 1-800-555-1234. To provide you with the most accurate quote, we\'ll need details about your project, including measurements, desired materials, and any specific requirements.'
       }
     ]
   },
