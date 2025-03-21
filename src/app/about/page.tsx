@@ -37,38 +37,38 @@ export default function About() {
   const teamMembers = [
     {
       name: 'Jane Smith',
-      role: 'Founder & Lead Designer',
-      bio: 'With over 15 years of experience in kitchen design, Jane has a passion for creating spaces that are both beautiful and functional.',
+      role: 'Gründerin & Chefdesignerin',
+      bio: 'Mit über 15 Jahren Erfahrung im Küchendesign hat Jane eine Leidenschaft für die Schaffung von Räumen, die sowohl schön als auch funktional sind.',
       image: '/images/about/jane-smith.jpg'
     },
     {
       name: 'Michael Chen',
-      role: 'Head of Production',
-      bio: 'Michael ensures that every cabinet and component we produce meets our exacting standards for quality and craftsmanship.',
+      role: 'Produktionsleiter',
+      bio: 'Michael stellt sicher, dass jeder Schrank und jede Komponente, die wir produzieren, unseren hohen Qualitäts- und Handwerksstandards entspricht.',
       image: '/images/about/michael-chen.jpg'
     },
     {
       name: 'Sarah Johnson',
-      role: 'Client Experience Manager',
-      bio: 'Sarah works directly with our clients to understand their needs and ensure their vision becomes reality.',
+      role: 'Kundenerfahrungsmanagerin',
+      bio: 'Sarah arbeitet direkt mit unseren Kunden zusammen, um ihre Bedürfnisse zu verstehen und sicherzustellen, dass ihre Vision Wirklichkeit wird.',
       image: '/images/about/sarah-johnson.jpg'
     }
   ];
 
   const values = [
     {
-      title: 'Quality',
-      description: 'We believe in delivering exceptional quality in every aspect of our work, from design to installation.',
+      title: 'Qualität',
+      description: 'Wir glauben daran, außergewöhnliche Qualität in jedem Aspekt unserer Arbeit zu liefern, vom Design bis zur Installation.',
       icon: <BuildOutlinedIcon sx={{ fontSize: 28 }} />
     },
     {
       title: 'Innovation',
-      description: 'We continuously explore new materials, techniques, and designs to bring fresh ideas to our clients.',
+      description: 'Wir erkunden kontinuierlich neue Materialien, Techniken und Designs, um unseren Kunden frische Ideen zu präsentieren.',
       icon: <FlashOnOutlinedIcon sx={{ fontSize: 28 }} />
     },
     {
-      title: 'Sustainability',
-      description: 'We are committed to sustainable practices, using eco-friendly materials and minimizing waste.',
+      title: 'Nachhaltigkeit',
+      description: 'Wir sind nachhaltigen Praktiken verpflichtet, verwenden umweltfreundliche Materialien und minimieren Abfall.',
       icon: <RecyclingOutlinedIcon sx={{ fontSize: 28 }} />
     }
   ];
@@ -89,7 +89,7 @@ export default function About() {
         <Box
           component="img"
           src="/images/about/hero-kitchen.jpg"
-          alt="Kitchen design studio"
+          alt="Küchendesignstudio"
           sx={{
             position: 'absolute',
             top: 0,
@@ -113,10 +113,10 @@ export default function About() {
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
           <Box maxWidth="xl">
             <Typography variant="h2" component="h1" fontWeight={700} color="white" gutterBottom>
-              About Doma Design
+              Über Doma Design
             </Typography>
             <Typography variant="h5" color="white" sx={{ maxWidth: 800, opacity: 0.9 }}>
-              We're on a mission to create beautiful, functional kitchen spaces that inspire and bring joy to everyday living.
+              Unsere Mission ist es, schöne, funktionale Küchenräume zu schaffen, die inspirieren und Freude am alltäglichen Leben bringen.
             </Typography>
           </Box>
         </Container>
@@ -132,9 +132,9 @@ export default function About() {
             indicatorColor="primary"
             aria-label="about tabs"
           >
-            <Tab label="Our Story" id="tab-0" aria-controls="tabpanel-0" />
-            <Tab label="Our Values" id="tab-1" aria-controls="tabpanel-1" />
-            <Tab label="Our Team" id="tab-2" aria-controls="tabpanel-2" />
+            <Tab label="Unsere Geschichte" id="tab-0" aria-controls="tabpanel-0" />
+            <Tab label="Unsere Werte" id="tab-1" aria-controls="tabpanel-1" />
+            <Tab label="Unser Team" id="tab-2" aria-controls="tabpanel-2" />
           </Tabs>
         </Box>
       </Container>
@@ -164,7 +164,7 @@ export default function About() {
                   <Box
                     component="img"
                     src="/images/about/team-working.jpg"
-                    alt="Kitchen designers at work"
+                    alt="Küchendesigner bei der Arbeit"
                     sx={{
                       position: 'absolute',
                       top: 0,
@@ -189,16 +189,16 @@ export default function About() {
               </Grid>
               <Grid item xs={12} md={7}>
                 <Typography variant="h3" component="h2" fontWeight={700} gutterBottom>
-                  Our Story
+                  Unsere Geschichte
                 </Typography>
                 <Typography variant="body1" color="text.secondary" paragraph>
-                  Founded in 2015, Doma Design emerged from a passion for creating beautiful, functional kitchens that serve as the heart of the home. Our journey began when our founder, Jane Smith, recognized the need for kitchen designs that seamlessly blend aesthetics with practicality.
+                  Doma Design wurde 2015 gegründet und entstand aus der Leidenschaft, schöne, funktionale Küchen zu schaffen, die das Herz des Zuhauses bilden. Unsere Reise begann, als unsere Gründerin Jane Smith die Notwendigkeit von Küchendesigns erkannte, die Ästhetik nahtlos mit Funktionalität verbinden.
                 </Typography>
                 <Typography variant="body1" color="text.secondary" paragraph>
-                  What started as a small design studio has grown into a comprehensive kitchen design and manufacturing company, serving clients throughout the region. Our success is built on our commitment to quality craftsmanship, innovative design, and exceptional customer service.
+                  Was als kleines Designstudio begann, hat sich zu einem umfassenden Küchendesign- und Herstellungsunternehmen entwickelt, das Kunden in der gesamten Region bedient. Unser Erfolg basiert auf unserem Engagement für qualitativ hochwertige Handwerkskunst, innovatives Design und außergewöhnlichen Kundenservice.
                 </Typography>
                 <Typography variant="body1" color="text.secondary" paragraph>
-                  At Doma Design, we believe that the kitchen is more than just a functional space—it's where memories are made, conversations flow, and life happens. This philosophy guides every project we undertake.
+                  Bei Doma Design glauben wir, dass die Küche mehr als nur ein funktionaler Raum ist – hier werden Erinnerungen geschaffen, Gespräche geführt und das Leben findet statt. Diese Philosophie leitet jedes Projekt, das wir übernehmen.
                 </Typography>
                 <Box sx={{ mt: 4 }}>
                   <MaterialButton 
@@ -207,7 +207,7 @@ export default function About() {
                     color="primary"
                     size="large"
                   >
-                    Get in Touch
+                    Kontakt aufnehmen
                   </MaterialButton>
                 </Box>
               </Grid>
@@ -229,13 +229,13 @@ export default function About() {
                 fontWeight={600} 
                 sx={{ letterSpacing: 1 }}
               >
-                What We Believe
+                Woran wir glauben
               </Typography>
               <Typography variant="h3" component="h2" fontWeight={800} gutterBottom>
-                Our Core Values
+                Unsere Kernwerte
               </Typography>
               <Typography variant="h6" color="text.secondary">
-                These principles guide everything we do
+                Diese Grundsätze leiten alles, was wir tun
               </Typography>
             </Box>
             
@@ -289,32 +289,32 @@ export default function About() {
               <Grid container>
                 <Grid item xs={12} md={6} sx={{ bgcolor: 'primary.main', color: 'white', p: { xs: 4, md: 6 } }}>
                   <Typography variant="h4" component="h3" fontWeight={700} gutterBottom>
-                    Our Commitment to Quality
+                    Unser Qualitätsversprechen
                   </Typography>
                   <Typography variant="body1" paragraph>
-                    Quality is at the heart of everything we do. We believe that every kitchen should be built to last, using the finest materials and expert craftsmanship.
+                    Qualität ist das Herzstück all unserer Tätigkeiten. Wir glauben, dass jede Küche langlebig sein sollte, gefertigt aus den besten Materialien und mit fachmännischem Handwerk.
                   </Typography>
                   <Typography variant="body1" paragraph>
-                    Our team takes pride in their work, paying attention to every detail to ensure that your kitchen not only looks beautiful but functions perfectly for years to come.
+                    Unser Team ist stolz auf seine Arbeit und achtet auf jedes Detail, um sicherzustellen, dass Ihre Küche nicht nur schön aussieht, sondern auch über Jahre hinweg perfekt funktioniert.
                   </Typography>
                   <Typography variant="body1">
-                    We stand behind our work with comprehensive warranties and exceptional after-sales service, giving you peace of mind with your investment.
+                    Wir stehen hinter unserer Arbeit mit umfassenden Garantien und außergewöhnlichem Kundenservice nach dem Verkauf, damit Sie sich bei Ihrer Investition sicher fühlen können.
                   </Typography>
                 </Grid>
                 <Grid item xs={12} md={6} sx={{ bgcolor: 'background.paper', p: { xs: 4, md: 6 } }}>
                   <Typography variant="h4" component="h3" fontWeight={700} color="text.primary" gutterBottom>
-                    Our Commitment to Sustainability
+                    Unser Engagement für Nachhaltigkeit
                   </Typography>
                   <Typography variant="body1" color="text.secondary" paragraph>
-                    We believe in creating kitchens that not only look beautiful but are also environmentally responsible.
+                    Wir glauben daran, Küchen zu schaffen, die nicht nur schön aussehen, sondern auch umweltbewusst sind.
                   </Typography>
                   <List>
                     {[
-                      "Sourcing materials from sustainable suppliers",
-                      "Minimizing waste through efficient manufacturing processes",
-                      "Using water-based, low-VOC finishes",
-                      "Designing for longevity to reduce the need for replacement",
-                      "Recycling and repurposing materials whenever possible"
+                      "Bezug von Materialien von nachhaltigen Lieferanten",
+                      "Minimierung von Abfall durch effiziente Herstellungsprozesse",
+                      "Verwendung von wasserbasierten Lacken mit niedrigem VOC-Gehalt",
+                      "Design für Langlebigkeit, um die Notwendigkeit eines Ersatzes zu reduzieren",
+                      "Recycling und Wiederverwendung von Materialien, wann immer möglich"
                     ].map((item, index) => (
                       <ListItem key={index} sx={{ py: 1 }}>
                         <ListItemIcon>
@@ -344,13 +344,13 @@ export default function About() {
                 fontWeight={600} 
                 sx={{ letterSpacing: 1 }}
               >
-                The People Behind Our Work
+                Die Menschen hinter unserer Arbeit
               </Typography>
               <Typography variant="h3" component="h2" fontWeight={800} gutterBottom>
-                Meet Our Team
+                Lernen Sie unser Team kennen
               </Typography>
               <Typography variant="h6" color="text.secondary">
-                Talented professionals dedicated to bringing your vision to life
+                Talentierte Fachleute, die sich dafür einsetzen, Ihre Vision zum Leben zu erwecken
               </Typography>
             </Box>
             
@@ -394,10 +394,10 @@ export default function About() {
             
             <Box sx={{ textAlign: 'center', mt: 8 }}>
               <Typography variant="h5" fontWeight={600} gutterBottom>
-                Interested in joining our team?
+                Interesse, Teil unseres Teams zu werden?
               </Typography>
               <Typography variant="body1" color="text.secondary" paragraph sx={{ maxWidth: 600, mx: 'auto' }}>
-                We're always looking for talented designers, craftspeople, and customer service professionals to join the Doma Design family.
+                Wir suchen immer nach talentierten Designern, Handwerkern und Kundenservice-Profis, die der Doma Design Familie beitreten möchten.
               </Typography>
               <MaterialButton 
                 href="/contact" 
@@ -405,7 +405,7 @@ export default function About() {
                 color="primary"
                 size="large"
               >
-                Contact Us
+                Kontaktieren Sie uns
               </MaterialButton>
             </Box>
           </Box>

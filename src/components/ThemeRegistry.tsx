@@ -2,9 +2,9 @@
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-// Create a modern SaaS-style MUI theme
+// Create a theme instance.
 const theme = createTheme({
   palette: {
     primary: {
@@ -155,7 +155,21 @@ const theme = createTheme({
   },
 });
 
+// Fix for hydration errors with Material UI
 export default function ThemeRegistry({ children }: { children: React.ReactNode }) {
+  // This ensures that the Material UI styles are only loaded on the client side,
+  // preventing the hydration mismatch between server and client rendering
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    // Return a simple placeholder during SSR to avoid hydration issues
+    return <div style={{ visibility: "hidden" }}>{children}</div>;
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

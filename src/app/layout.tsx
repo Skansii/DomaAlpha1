@@ -1,9 +1,12 @@
-import type { Metadata } from "next";
+'use client';
+
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ThemeRegistry from '../components/ThemeRegistry';
+import { usePathname } from 'next/navigation';
+import { metadata } from './metadata';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -11,19 +14,14 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-export const metadata: Metadata = {
-  title: "Doma Design | Modern Kitchen Solutions",
-  description: "Custom Kitchen Design and Manufacturing for modern homes and businesses.",
-  icons: {
-    icon: '/favicon.ico',
-  },
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+  const isUserDashboard = pathname?.startsWith('/user-dashboard');
+
   return (
     <html lang="en" className="h-full scroll-smooth">
       <body className={`${inter.variable} font-sans antialiased h-full`}>
@@ -33,7 +31,7 @@ export default function RootLayout({
             <main className="flex-grow">
               {children}
             </main>
-            <Footer />
+            {!isUserDashboard && <Footer />}
           </div>
         </ThemeRegistry>
       </body>
