@@ -164,7 +164,7 @@ const faqCategories = [
       },
       {
         question: 'What should I do if my cabinets are damaged during delivery?',
-        answer: 'If you notice any damage during delivery, note it on the delivery receipt before signing. For any damage discovered after delivery, take photos and contact our customer service within 48 hours. We'll work with you to assess the damage and determine the best resolution, whether that's replacement parts, repair, or other appropriate solutions.'
+        answer: 'If you notice any damage during delivery, note it on the delivery receipt before signing. For any damage discovered after delivery, take photos and contact our customer service within 48 hours. We\'ll work with you to assess the damage and determine the best resolution, whether that\'s replacement parts, repair, or other appropriate solutions.'
       },
       {
         question: 'Are spare parts available for purchase?',
