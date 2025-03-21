@@ -33,7 +33,7 @@ const jobs = [
     type: 'Full-time',
     description: 'Lead kitchen design projects from concept to completion, collaborate with clients and contractors, and create detailed 3D renderings and technical drawings.',
     requirements: [
-      'Bachelor's degree in Interior Design, Architecture, or related field',
+      'Bachelor\'s degree in Interior Design, Architecture, or related field',
       'Minimum 5 years of kitchen design experience',
       '3D design software proficiency (preferably in AutoCAD and SketchUp)',
       'Strong portfolio demonstrating kitchen and cabinet design expertise',
