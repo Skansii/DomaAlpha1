@@ -37,21 +37,21 @@ export default function Home() {
       id: 1,
       title: "Moderne Küche",
       description: "Schlichtes Design mit modernsten Funktionen und klaren Linien.",
-      image: "https://images.pexels.com/photos/3935349/pexels-photo-3935349.jpeg",
+      image: "https://images.pexels.com/photos/6283972/pexels-photo-6283972.jpeg",
       alt: "Moderne Küche mit weißen Schränken und Insel"
     },
     {
       id: 2,
       title: "Klassische Schränke",
       description: "Zeitlose Eleganz mit Qualitätshandwerk und Liebe zum Detail.",
-      image: "https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg",
+      image: "https://images.pexels.com/photos/6032424/pexels-photo-6032424.jpeg",
       alt: "Klassische Küche mit Holzschränken"
     },
     {
       id: 3,
       title: "Zeitgenössischer Stil",
       description: "Innovative Lösungen für das moderne Zuhause, die Form und Funktion verbinden.",
-      image: "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg",
+      image: "https://images.pexels.com/photos/6032418/pexels-photo-6032418.jpeg",
       alt: "Zeitgenössische Küche mit minimalistischem Design"
     }
   ];
@@ -94,7 +94,7 @@ export default function Home() {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundImage: 'url(https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg)',
+            backgroundImage: 'url(https://images.pexels.com/photos/6489117/pexels-photo-6489117.jpeg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             opacity: 0.3,
@@ -358,7 +358,15 @@ export default function Home() {
                     <Typography variant="body1" color="text.secondary" paragraph>
                       {design.description}
                     </Typography>
-                    <Link href="/services" passHref style={{ textDecoration: 'none' }}>
+                    <Link 
+                      href={
+                        design.id === 1 ? "/designs/modern-kitchen" : 
+                        design.id === 2 ? "/designs/classic-cabinets" : 
+                        "/designs/contemporary-style"
+                      } 
+                      passHref 
+                      style={{ textDecoration: 'none' }}
+                    >
                       <Box 
                         sx={{ 
                           display: 'flex',
