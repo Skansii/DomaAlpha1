@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Session, User } from '@supabase/supabase-js';
-import { getSession, signIn, signUp, signOut, getUser, supabase } from '@/lib/supabase';
+import { getSession, signIn, signUp, signOut, getUser, supabase, signInWithGoogle } from '@/lib/supabase';
 
 type AuthContextType = {
   user: User | null;
@@ -12,6 +12,7 @@ type AuthContextType = {
   signIn: (email: string, password: string) => Promise<{ success: boolean, error?: string }>;
   signUp: (email: string, password: string) => Promise<{ success: boolean, error?: string }>;
   signOut: () => Promise<{ success: boolean, error?: string }>;
+  signInWithGoogle: () => Promise<{ success: boolean, error?: string }>;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -114,6 +115,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const handleSignInWithGoogle = async () => {
+    try {
+      const { data, error } = await signInWithGoogle();
+      if (error) {
+        return { success: false, error: error.message };
+      }
+      // OAuth redirects to the provider, so if we get this far, it means the redirect is happening
+      return { success: true };
+    } catch (error: any) {
+      return { success: false, error: error.message };
+    }
+  };
+
   const value = {
     user,
     session,
@@ -121,6 +135,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     signIn: handleSignIn,
     signUp: handleSignUp,
     signOut: handleSignOut,
+    signInWithGoogle: handleSignInWithGoogle,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
