@@ -86,7 +86,7 @@ export default function Home() {
           alignItems: 'center',
           color: 'white',
           overflow: 'hidden',
-          background: 'linear-gradient(to bottom right, rgba(0,0,0,0.8), rgba(0,0,0,0.7))',
+          background: 'linear-gradient(to bottom right, rgba(0,0,0,0.6), rgba(0,0,0,0.7))',
           '&::before': {
             content: '""',
             position: 'absolute',
@@ -94,10 +94,10 @@ export default function Home() {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundImage: 'url(https://images.pexels.com/photos/6489117/pexels-photo-6489117.jpeg)',
+            backgroundImage: 'url(/images/kitchen-ar-visualization.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            opacity: 0.3,
+            opacity: 0.5,
             zIndex: -1
           }
         }}
