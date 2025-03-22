@@ -29,6 +29,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Script from 'next/script';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,6 +38,7 @@ const Header = () => {
   const [mobileLanguageAnchorEl, setMobileLanguageAnchorEl] = useState<null | HTMLElement>(null);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const megaMenuRef = useRef<HTMLDivElement>(null);
+  const { user, signOut } = useAuth();
 
   const handleLanguageMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setLanguageAnchorEl(event.currentTarget);
@@ -344,22 +346,45 @@ const Header = () => {
 
             {/* Auth Buttons - Desktop */}
             <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2 }}>
-              <MaterialButton 
-                href="/login" 
-                variant="outlined" 
-                color="primary"
-                size="small"
-              >
-                Log in
-              </MaterialButton>
-              <MaterialButton 
-                href="/signup" 
-                variant="contained" 
-                color="primary"
-                size="small"
-              >
-                Get Started
-              </MaterialButton>
+              {user ? (
+                <>
+                  <MaterialButton 
+                    href="/user-dashboard" 
+                    variant="outlined" 
+                    color="primary"
+                    size="small"
+                  >
+                    Dashboard
+                  </MaterialButton>
+                  <MaterialButton 
+                    onClick={() => signOut()}
+                    variant="contained" 
+                    color="primary"
+                    size="small"
+                  >
+                    Sign Out
+                  </MaterialButton>
+                </>
+              ) : (
+                <>
+                  <MaterialButton 
+                    href="/login" 
+                    variant="outlined" 
+                    color="primary"
+                    size="small"
+                  >
+                    Log in
+                  </MaterialButton>
+                  <MaterialButton 
+                    href="/signup" 
+                    variant="contained" 
+                    color="primary"
+                    size="small"
+                  >
+                    Get Started
+                  </MaterialButton>
+                </>
+              )}
             </Box>
             
             {/* Mobile Menu Button */}
@@ -525,24 +550,51 @@ const Header = () => {
         </Box>
         
         <Box sx={{ px: 2, py: 3, display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <MaterialButton 
-            href="/login" 
-            variant="outlined" 
-            color="primary"
-            fullWidth
-            onClick={toggleDrawer(false)}
-          >
-            Log in
-          </MaterialButton>
-          <MaterialButton 
-            href="/signup" 
-            variant="contained" 
-            color="primary"
-            fullWidth
-            onClick={toggleDrawer(false)}
-          >
-            Get Started
-          </MaterialButton>
+          {user ? (
+            <>
+              <MaterialButton 
+                href="/user-dashboard" 
+                variant="outlined" 
+                color="primary"
+                fullWidth
+                onClick={toggleDrawer(false)}
+              >
+                Dashboard
+              </MaterialButton>
+              <MaterialButton 
+                onClick={() => {
+                  toggleDrawer(false)(new Event('click') as unknown as React.MouseEvent);
+                  signOut();
+                }}
+                variant="contained" 
+                color="primary"
+                fullWidth
+              >
+                Sign Out
+              </MaterialButton>
+            </>
+          ) : (
+            <>
+              <MaterialButton 
+                href="/login" 
+                variant="outlined" 
+                color="primary"
+                fullWidth
+                onClick={toggleDrawer(false)}
+              >
+                Log in
+              </MaterialButton>
+              <MaterialButton 
+                href="/signup" 
+                variant="contained" 
+                color="primary"
+                fullWidth
+                onClick={toggleDrawer(false)}
+              >
+                Get Started
+              </MaterialButton>
+            </>
+          )}
         </Box>
       </Drawer>
     </>

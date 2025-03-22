@@ -17,13 +17,30 @@ Modern web application for DOMA Design, a kitchen and cabinet design company.
 
 - Node.js 18+ (recommended: Node.js 20)
 - npm 9+ or yarn
+- Supabase account for authentication (free tier works fine)
 
 ### Installation
 
 ```bash
 # Install dependencies
 npm install
+
+# Set up Supabase authentication
+npm run setup-auth
 ```
+
+### Authentication Setup
+
+This application uses Supabase for authentication. Follow these steps to set up authentication:
+
+1. Create a Supabase account at [https://supabase.com](https://supabase.com) if you don't have one
+2. Create a new project in Supabase
+3. Navigate to Project Settings > API to get your project URL and anon key
+4. Run `npm run setup-auth` and enter these credentials
+5. Enable Email/Password authentication in Supabase (Auth > Providers)
+6. Configure any other auth settings as needed (confirmation emails, OAuth providers, etc.)
+
+The user dashboard is protected and only accessible to authenticated users.
 
 ### Development
 
@@ -37,7 +54,9 @@ npm run dev
 
 The application will be available at:
 - Main website: http://localhost:3000
-- User dashboard: http://localhost:3000/user-dashboard
+- User dashboard: http://localhost:3000/user-dashboard (requires authentication)
+- Login: http://localhost:3000/login
+- Sign up: http://localhost:3000/signup
 
 ## Project Structure
 

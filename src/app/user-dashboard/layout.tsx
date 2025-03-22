@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 import { Box, CssBaseline, ThemeProvider, createTheme, Container } from '@mui/material';
 import LeftSidebar from '../../components/dashboard/LeftSidebar';
 import RightSidebar from '../../components/dashboard/RightSidebar';
+import ProtectedRoute from '@/components/ProtectedRoute';
 
 // Theme creation
 const theme = createTheme({
@@ -73,34 +74,36 @@ const theme = createTheme({
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Box sx={{ 
-        display: 'flex', 
-        minHeight: '100vh',
-        bgcolor: '#f5f5f7'
-      }}>
-        {/* Left Sidebar Navigation */}
-        <LeftSidebar />
-        
-        {/* Main Content */}
-        <Box 
-          component="main" 
-          sx={{ 
-            flexGrow: 1,
-            p: 3,
-            ml: { xs: 0, sm: '240px' },
-            width: { xs: '100%', sm: `calc(100% - 240px)` }
-          }}
-        >
-          <Container maxWidth="xl" sx={{ mt: 8 }}>
-            {children}
-          </Container>
+    <ProtectedRoute>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Box sx={{ 
+          display: 'flex', 
+          minHeight: '100vh',
+          bgcolor: '#f5f5f7'
+        }}>
+          {/* Left Sidebar Navigation */}
+          <LeftSidebar />
+          
+          {/* Main Content */}
+          <Box 
+            component="main" 
+            sx={{ 
+              flexGrow: 1,
+              p: 3,
+              ml: { xs: 0, sm: '240px' },
+              width: { xs: '100%', sm: `calc(100% - 240px)` }
+            }}
+          >
+            <Container maxWidth="xl" sx={{ mt: 8 }}>
+              {children}
+            </Container>
+          </Box>
+          
+          {/* Right Sidebar */}
+          <RightSidebar />
         </Box>
-        
-        {/* Right Sidebar */}
-        <RightSidebar />
-      </Box>
-    </ThemeProvider>
+      </ThemeProvider>
+    </ProtectedRoute>
   );
 } 
