@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
+import Image from 'next/image';
 
 export default function Dashboard() {
   const { user, isAuthenticated, isLoading } = useAuth();
@@ -70,6 +71,69 @@ export default function Dashboard() {
               Get a Quote
             </button>
           </div>
+        </div>
+      </div>
+      
+      {/* Recent 3D Renderings Section */}
+      <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 className="text-xl font-bold text-gray-900 mb-4">Recent 3D Renderings</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="overflow-hidden rounded-lg shadow-md">
+            <div className="relative h-64 w-full">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-60 z-10 rounded-lg"></div>
+              <Image
+                src="https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?q=80&w=1935&auto=format&fit=crop"
+                alt="Modern Kitchen Design"
+                fill
+                className="object-cover rounded-lg"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div className="absolute bottom-0 left-0 p-4 z-20 text-white">
+                <h3 className="font-semibold text-lg">Modern Kitchen #247</h3>
+                <p className="text-sm text-gray-200">Updated 2 days ago</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="overflow-hidden rounded-lg shadow-md">
+            <div className="relative h-64 w-full">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-60 z-10 rounded-lg"></div>
+              <Image
+                src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?q=80&w=1887&auto=format&fit=crop"
+                alt="Scandinavian Open Kitchen"
+                fill
+                className="object-cover rounded-lg"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div className="absolute bottom-0 left-0 p-4 z-20 text-white">
+                <h3 className="font-semibold text-lg">Light & Airy #186</h3>
+                <p className="text-sm text-gray-200">Updated 1 week ago</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="overflow-hidden rounded-lg shadow-md">
+            <div className="relative h-64 w-full">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-60 z-10 rounded-lg"></div>
+              <Image
+                src="https://images.unsplash.com/photo-1609348445429-a521f918aeb4?q=80&w=1887&auto=format&fit=crop"
+                alt="Luxury Kitchen Island"
+                fill
+                className="object-cover rounded-lg"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div className="absolute bottom-0 left-0 p-4 z-20 text-white">
+                <h3 className="font-semibold text-lg">Premium Design #328</h3>
+                <p className="text-sm text-gray-200">Updated 2 weeks ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="mt-4 text-center">
+          <button className="px-4 py-2 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-colors">
+            View All Renderings
+          </button>
         </div>
       </div>
       

@@ -1,39 +1,39 @@
-import type { Metadata } from "next";
-import { GeistSans, GeistMono } from "geist/font";
+'use client';
+
+import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import ThemeRegistry from '../components/ThemeRegistry';
+import { usePathname } from 'next/navigation';
+import { metadata } from './metadata';
 
-const geistSans = GeistSans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-geist-sans",
+  display: "swap",
+  variable: "--font-inter",
 });
-
-const geistMono = GeistMono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-});
-
-export const metadata: Metadata = {
-  title: "Doma Design - Modern Kitchen and Cabinet Solutions",
-  description: "Experience quality kitchen and cabinet designs with Doma Design. View our catalog, explore 3D visualizations, and create your dream kitchen.",
-};
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+  const isUserDashboard = pathname?.startsWith('/user-dashboard');
+
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer />
-        </div>
+    <html lang="en" className="h-full scroll-smooth">
+      <body className={`${inter.variable} font-sans antialiased h-full`}>
+        <ThemeRegistry>
+          <div className="flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-grow">
+              {children}
+            </main>
+            {!isUserDashboard && <Footer />}
+          </div>
+        </ThemeRegistry>
       </body>
     </html>
   );
