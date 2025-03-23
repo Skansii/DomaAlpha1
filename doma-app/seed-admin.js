@@ -1,22 +1,31 @@
 const { MongoClient, ObjectId } = require('mongodb');
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
+require('dotenv').config({ path: '.env.local' });
 
-// Connection parameters
-const uri = process.env.MONGODB_URI || 'mongodb://domaadmin:aRZx262775%2555@138.201.190.153:27017/?authSource=admin';
-const dbName = 'doma_admin';
+// Connection parameters from environment variables
+const uri = process.env.MONGODB_URI;
+const dbName = process.env.MONGODB_DB_NAME || 'doma_admin';
 const userCollection = 'users';
 
-// Admin user details
-const adminUser = {
-  _id: new ObjectId(),
-  email: 'admin@domadesign.com',
-  name: 'Admin User',
-  role: 'admin',
-  status: 'active',
-  createdAt: new Date(),
-  updatedAt: new Date(),
-  hashedPassword: bcrypt.hashSync('admin123', 10) // Change this password in production
-};
+if (!uri) {
+  console.error('ERROR: MongoDB connection string (MONGODB_URI) is not set in environment variables.');
+  process.exit(1);
+}
+
+// Generate a secure random password
+function generateSecurePassword(length = 16) {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+';
+  const randomBytes = crypto.randomBytes(length);
+  let password = '';
+  
+  for (let i = 0; i < length; i++) {
+    const index = randomBytes[i] % chars.length;
+    password += chars.charAt(index);
+  }
+  
+  return password;
+}
 
 async function seedAdmin() {
   const client = new MongoClient(uri);
@@ -29,19 +38,36 @@ async function seedAdmin() {
     const collection = db.collection(userCollection);
     
     // Check if admin user already exists
-    const existingAdmin = await collection.findOne({ email: adminUser.email });
+    const existingAdmin = await collection.findOne({ email: 'admin@domadesign.com' });
     
     if (existingAdmin) {
       console.log('Admin user already exists. Skipping creation.');
       return;
     }
     
+    // Generate a secure random password
+    const adminPassword = generateSecurePassword();
+    
+    // Admin user details
+    const adminUser = {
+      _id: new ObjectId(),
+      email: 'admin@domadesign.com',
+      name: 'Admin User',
+      role: 'admin',
+      status: 'active',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      hashedPassword: bcrypt.hashSync(adminPassword, 10)
+    };
+    
     // Create admin user
     const result = await collection.insertOne(adminUser);
     
     if (result.acknowledged) {
       console.log(`Admin user created with ID: ${adminUser._id}`);
-      console.log(`Login with email: ${adminUser.email} and password: admin123`);
+      console.log(`Login with email: ${adminUser.email}`);
+      console.log(`Generated password: ${adminPassword}`);
+      console.log(`IMPORTANT: Save this password securely as it won't be shown again.`);
     } else {
       console.error('Failed to create admin user');
     }
@@ -53,5 +79,5 @@ async function seedAdmin() {
   }
 }
 
-// Run the seed function
-seedAdmin().catch(console.error); 
+// Run the seeding function
+seedAdmin(); 

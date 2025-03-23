@@ -1,8 +1,12 @@
 import { MongoClient, Db } from 'mongodb';
 
 // Connection URI from the environment variables
-const uri = process.env.MONGODB_URI || 'mongodb://domaadmin:aRZx262775%2555@138.201.190.153:27017/?authSource=admin';
-const dbName = 'doma_admin';
+const uri = process.env.MONGODB_URI || '';
+const dbName = process.env.MONGODB_DB_NAME || 'doma_admin';
+
+if (!uri) {
+  console.error('ERROR: MongoDB connection string (MONGODB_URI) is not set in environment variables.');
+}
 
 let cachedClient: MongoClient | null = null;
 let cachedDb: Db | null = null;
@@ -14,6 +18,10 @@ export async function connectToDatabase(): Promise<{ client: MongoClient, db: Db
   }
 
   // If no cached connection, create new connection
+  if (!uri) {
+    throw new Error("MongoDB connection string is not defined. Please set MONGODB_URI environment variable.");
+  }
+
   const client = new MongoClient(uri);
   await client.connect();
   const db = client.db(dbName);

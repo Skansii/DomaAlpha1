@@ -107,3 +107,63 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Environment Setup Guide
+
+This application requires certain environment variables to be set for proper operation. Follow these steps to configure your environment:
+
+### 1. Create `.env.local` File
+
+Create a file named `.env.local` in the root of the project (doma-app directory).
+
+### 2. Configure Required Environment Variables
+
+Add the following required environment variables to your `.env.local` file:
+
+```
+# MongoDB Connection
+MONGODB_URI=mongodb://<username>:<password>@<host>:<port>/<dbname>?authSource=admin
+MONGODB_DB_NAME=doma_admin
+
+# NextAuth Configuration
+NEXTAUTH_SECRET=<generate-a-secure-random-string>
+NEXTAUTH_URL=http://localhost:3000
+
+# Supabase (if using)
+NEXT_PUBLIC_SUPABASE_URL=<your-supabase-url>
+NEXT_PUBLIC_SUPABASE_ANON_KEY=<your-supabase-anon-key>
+```
+
+### 3. Security Notes
+
+- **NEVER commit your `.env.local` file to version control**
+- Make sure to generate a strong random string for `NEXTAUTH_SECRET`
+- Store your production secrets securely in your deployment environment
+- Rotate credentials regularly for security
+
+### 4. Setting Up Admin User
+
+To create an initial admin user:
+
+```bash
+npm run seed-admin
+```
+
+This script will generate a secure random password. Save this password securely as it will only be shown once.
+
+## Development
+
+To start the development server:
+
+```bash
+npm run dev
+```
+
+## Production
+
+For production deployment, make sure to set up the environment variables in your hosting provider's environment configuration system.
+
+```bash
+npm run build
+npm start
+```

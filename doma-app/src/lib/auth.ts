@@ -108,8 +108,13 @@ export const authOptions: NextAuthConfig = {
     strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
-  secret: process.env.NEXTAUTH_SECRET || 'your-default-secret-do-not-use-in-production',
+  secret: process.env.NEXTAUTH_SECRET,
 };
+
+// Check if secret is missing in development
+if (process.env.NODE_ENV === 'development' && !process.env.NEXTAUTH_SECRET) {
+  console.error('WARNING: NEXTAUTH_SECRET is not set in environment variables. Authentication will not work properly.');
+}
 
 // Export a single auth object
 export const { auth, handlers, signIn, signOut } = NextAuth(authOptions);
