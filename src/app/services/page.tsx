@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import MaterialButton from '@/components/MaterialButton';
+import MaterialButton from '@/components/ui/MaterialButton';
 
 export default function Services() {
   const services = [

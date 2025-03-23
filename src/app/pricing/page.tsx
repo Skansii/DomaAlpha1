@@ -19,7 +19,7 @@ import {
 } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
-import MaterialButton from '@/components/MaterialButton';
+import MaterialButton from '@/components/ui/MaterialButton';
 
 const pricingPlans = [
   {

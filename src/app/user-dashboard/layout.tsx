@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import { Box, CssBaseline, ThemeProvider, createTheme, Container } from '@mui/material';
 import LeftSidebar from '../../components/dashboard/LeftSidebar';
 import RightSidebar from '../../components/dashboard/RightSidebar';
-import ProtectedRoute from '@/components/ProtectedRoute';
+import ProtectedRoute from '@/components/auth/ProtectedRoute';
 
 // Theme creation
 const theme = createTheme({

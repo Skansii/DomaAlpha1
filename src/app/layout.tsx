@@ -2,9 +2,9 @@
 
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import ThemeRegistry from '../components/ThemeRegistry';
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
+import ThemeRegistry from '../components/ui/theme/ThemeRegistry';
 import { usePathname } from 'next/navigation';
 import { AuthProvider } from '@/contexts/AuthContext';
 

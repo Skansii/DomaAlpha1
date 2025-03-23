@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import MaterialButton from '@/components/MaterialButton';
+import MaterialButton from '@/components/ui/MaterialButton';
 import { Box, Container, Typography, Grid, Card, CardContent, CardMedia, Stack, Paper, Divider } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import DesignServicesOutlinedIcon from '@mui/icons-material/DesignServicesOutlined';

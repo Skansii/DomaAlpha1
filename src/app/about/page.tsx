@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import MaterialButton from '@/components/MaterialButton';
+import MaterialButton from '@/components/ui/MaterialButton';
 import {
   Box,
   Container,

@@ -22,7 +22,7 @@ import ConstructionOutlinedIcon from '@mui/icons-material/ConstructionOutlined';
 import DashboardCustomizeOutlinedIcon from '@mui/icons-material/DashboardCustomizeOutlined';
 import SupportOutlinedIcon from '@mui/icons-material/SupportOutlined';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import MaterialButton from '@/components/MaterialButton';
+import MaterialButton from '@/components/ui/MaterialButton';
 
 export default function Features() {
   const theme = useTheme();

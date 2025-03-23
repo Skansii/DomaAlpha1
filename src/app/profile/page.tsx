@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Box, Container, Typography, Paper, Avatar, Button, Skeleton, Alert } from '@mui/material';
 import { useAuth } from '@/contexts/AuthContext';
-import ProtectedRoute from '@/components/ProtectedRoute';
+import ProtectedRoute from '@/components/auth/ProtectedRoute';
 
 export default function ProfilePage() {
   const { user, isLoading } = useAuth();
