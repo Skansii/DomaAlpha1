@@ -229,7 +229,7 @@ export default function HomeClient() {
             sx={{ mt: 6, justifyContent: 'center' }}
           >
             <MaterialButton 
-              href="/services" 
+              href="/products" 
               variant="contained" 
               color="primary"
               size="large" 
@@ -616,4 +616,4 @@ export default function HomeClient() {
       </Box>
     </>
   );
-} 
+}
