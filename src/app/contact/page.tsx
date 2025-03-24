@@ -1,189 +1,399 @@
 'use client';
 
-import { useState } from 'react';
-import ContactService, { ContactFormData } from '@/services/ContactService';
+import React, { useState } from 'react';
+import { 
+  Container, 
+  Box, 
+  Typography, 
+  Grid, 
+  TextField, 
+  Button, 
+  MenuItem, 
+  Paper,
+  Snackbar,
+  Alert,
+  Breadcrumbs,
+  Divider,
+  Card,
+  CardContent,
+  Stack
+} from '@mui/material';
+import Link from 'next/link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PhoneIcon from '@mui/icons-material/Phone';
+import EmailIcon from '@mui/icons-material/Email';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import SendIcon from '@mui/icons-material/Send';
 
-export default function Contact() {
-  const [formData, setFormData] = useState<ContactFormData>({
-    name: '',
+// Define inquiry types
+const inquiryTypes = [
+  { value: 'general', label: 'General Inquiry' },
+  { value: 'sales', label: 'Sales & Pricing' },
+  { value: 'support', label: 'Technical Support' },
+  { value: 'design', label: 'Design Consultation' },
+  { value: 'installation', label: 'Installation Services' },
+  { value: 'career', label: 'Career Opportunities' },
+  { value: 'press', label: 'Press & Media' },
+];
+
+// Define office locations
+const officeLocations = [
+  {
+    name: 'Portland Headquarters',
+    address: '123 Design Street, Portland, OR 97204',
+    phone: '+1 (503) 555-1234',
+    email: 'portland@domadesign.com',
+    hours: 'Mon-Fri: 9AM-5PM PST',
+  },
+  {
+    name: 'New York Showroom',
+    address: '456 Kitchen Avenue, New York, NY 10001',
+    phone: '+1 (212) 555-5678',
+    email: 'newyork@domadesign.com',
+    hours: 'Mon-Sat: 10AM-7PM EST',
+  },
+  {
+    name: 'Chicago Design Center',
+    address: '789 Cabinet Boulevard, Chicago, IL 60607',
+    phone: '+1 (312) 555-9012',
+    email: 'chicago@domadesign.com',
+    hours: 'Mon-Fri: 9AM-6PM CST',
+  }
+];
+
+export default function ContactPage() {
+  // Form state
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
+    inquiryType: '',
     message: '',
-    service: 'Kitchen Design'
   });
 
+  // Form validation state
+  const [errors, setErrors] = useState({
+    firstName: false,
+    lastName: false,
+    email: false,
+    inquiryType: false,
+    message: false,
+  });
+
+  // Submission state
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [submitError, setSubmitError] = useState('');
+  const [submitError, setSubmitError] = useState(false);
 
+  // Handle form input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+    
+    // Clear error for this field if it was previously marked as error
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: false,
+      });
+    }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitError('');
+  // Validate form
+  const validateForm = () => {
+    const newErrors = {
+      firstName: !formData.firstName,
+      lastName: !formData.lastName,
+      email: !formData.email || !/^\S+@\S+\.\S+$/.test(formData.email),
+      inquiryType: !formData.inquiryType,
+      message: !formData.message,
+    };
     
-    // Validate form data
-    const validationError = ContactService.validateContactForm(formData);
-    if (validationError) {
-      setSubmitError(validationError);
-      setIsSubmitting(false);
+    setErrors(newErrors);
+    return !Object.values(newErrors).some(error => error);
+  };
+
+  // Handle form submission
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
       return;
     }
     
-    // Submit form data
-    const response = await ContactService.submitContactForm(formData);
-    setIsSubmitting(false);
+    setIsSubmitting(true);
     
-    if (response.success) {
+    // Simulate API call for form submission
+    setTimeout(() => {
+      setIsSubmitting(false);
       setSubmitSuccess(true);
+      
+      // Reset form after successful submission
       setFormData({
-        name: '',
+        firstName: '',
+        lastName: '',
         email: '',
         phone: '',
+        inquiryType: '',
         message: '',
-        service: 'Kitchen Design'
       });
-    } else {
-      setSubmitError(response.error || 'Failed to submit the form. Please try again.');
-    }
+    }, 1500);
+  };
+
+  // Handle success message close
+  const handleSuccessClose = () => {
+    setSubmitSuccess(false);
+  };
+
+  // Handle error message close
+  const handleErrorClose = () => {
+    setSubmitError(false);
   };
 
   return (
-    <div className="container mx-auto p-4 md:p-8">
-      <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Contact Us</h1>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-        <div>
-          <p className="text-lg text-gray-600 mb-6">
-            We're here to answer any questions you have about our services. Reach out to us and we'll respond as soon as we can.
-          </p>
-          
-          <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Office Location</h2>
-            <p className="text-gray-600 mb-2">123 Design Street</p>
-            <p className="text-gray-600 mb-2">San Francisco, CA 94103</p>
-            <p className="text-gray-600">United States</p>
-          </div>
-          
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Contact Information</h2>
-            <p className="text-gray-600 mb-2">
-              <strong>Email:</strong> info@domadesign.com
-            </p>
-            <p className="text-gray-600 mb-2">
-              <strong>Phone:</strong> +1 (555) 123-4567
-            </p>
-            <p className="text-gray-600">
-              <strong>Hours:</strong> Monday - Friday: 9am - 5pm
-            </p>
-          </div>
-        </div>
-        
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">Send us a Message</h2>
-          
-          {submitSuccess ? (
-            <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded mb-4">
-              Thank you for your message! We'll get back to you soon.
-            </div>
-          ) : (
+    <Container maxWidth="lg" sx={{ py: 8 }}>
+      <Box sx={{ mb: 4 }}>
+        <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
+          <Link href="/" passHref>
+            <Typography color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
+              Home
+            </Typography>
+          </Link>
+          <Typography color="text.primary">Contact</Typography>
+        </Breadcrumbs>
+      </Box>
+
+      <Typography variant="h3" component="h1" sx={{ mb: 2, fontWeight: 600 }}>
+        Contact Us
+      </Typography>
+      <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 6, maxWidth: 800 }}>
+        We're here to help with your kitchen and cabinet needs. Reach out to our team for support, 
+        sales inquiries, or to schedule a consultation.
+      </Typography>
+
+      <Grid container spacing={5}>
+        <Grid item xs={12} md={7}>
+          <Paper elevation={2} sx={{ p: { xs: 3, md: 5 }, borderRadius: 2 }}>
+            <Typography variant="h5" component="h2" sx={{ mb: 4 }}>
+              Get in Touch
+            </Typography>
+            
             <form onSubmit={handleSubmit}>
-              {submitError && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-4">
-                  {submitError}
-                </div>
-              )}
-              
-              <div className="mb-4">
-                <label htmlFor="name" className="block text-gray-700 mb-2">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
-                  required
-                />
-              </div>
-              
-              <div className="mb-4">
-                <label htmlFor="email" className="block text-gray-700 mb-2">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
-                  required
-                />
-              </div>
-              
-              <div className="mb-4">
-                <label htmlFor="phone" className="block text-gray-700 mb-2">Phone (optional)</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
-                />
-              </div>
-              
-              <div className="mb-4">
-                <label htmlFor="service" className="block text-gray-700 mb-2">Service Interested In</label>
-                <select
-                  id="service"
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
-                >
-                  <option value="Kitchen Design">Kitchen Design</option>
-                  <option value="Cabinet Manufacturing">Cabinet Manufacturing</option>
-                  <option value="Kitchen Remodeling">Kitchen Remodeling</option>
-                  <option value="3D Visualization">3D Visualization</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              
-              <div className="mb-4">
-                <label htmlFor="message" className="block text-gray-700 mb-2">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={4}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
-                  required
-                ></textarea>
-              </div>
-              
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full px-6 py-3 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition duration-300 disabled:bg-red-400"
-              >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
+              <Grid container spacing={3}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    label="First Name"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    fullWidth
+                    required
+                    error={errors.firstName}
+                    helperText={errors.firstName ? 'First name is required' : ''}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    label="Last Name"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    fullWidth
+                    required
+                    error={errors.lastName}
+                    helperText={errors.lastName ? 'Last name is required' : ''}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    label="Email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    fullWidth
+                    required
+                    error={errors.email}
+                    helperText={errors.email ? 'Valid email is required' : ''}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    label="Phone (optional)"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    select
+                    label="Inquiry Type"
+                    name="inquiryType"
+                    value={formData.inquiryType}
+                    onChange={handleChange}
+                    fullWidth
+                    required
+                    error={errors.inquiryType}
+                    helperText={errors.inquiryType ? 'Please select an inquiry type' : ''}
+                  >
+                    {inquiryTypes.map((option) => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    multiline
+                    rows={5}
+                    fullWidth
+                    required
+                    error={errors.message}
+                    helperText={errors.message ? 'Please enter your message' : ''}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    disabled={isSubmitting}
+                    endIcon={<SendIcon />}
+                    sx={{ mt: 2 }}
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </Button>
+                </Grid>
+              </Grid>
             </form>
-          )}
-        </div>
-      </div>
-      
-      <div className="bg-gray-200 rounded-lg p-6 h-64 flex items-center justify-center">
-        <p className="text-gray-500">Map will be displayed here</p>
-      </div>
-    </div>
+          </Paper>
+        </Grid>
+
+        <Grid item xs={12} md={5}>
+          <Box>
+            <Typography variant="h5" component="h2" sx={{ mb: 4 }}>
+              Our Locations
+            </Typography>
+            
+            <Stack spacing={3}>
+              {officeLocations.map((office, index) => (
+                <Card key={index} elevation={1} sx={{ borderRadius: 2 }}>
+                  <CardContent>
+                    <Typography variant="h6" gutterBottom>
+                      {office.name}
+                    </Typography>
+                    
+                    <Grid container spacing={2} sx={{ mt: 1 }}>
+                      <Grid item xs={12}>
+                        <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
+                          <LocationOnIcon sx={{ color: 'primary.main', mr: 1, mt: 0.3 }} fontSize="small" />
+                          <Typography variant="body2">
+                            {office.address}
+                          </Typography>
+                        </Box>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                          <PhoneIcon sx={{ color: 'primary.main', mr: 1 }} fontSize="small" />
+                          <Typography variant="body2">
+                            {office.phone}
+                          </Typography>
+                        </Box>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                          <EmailIcon sx={{ color: 'primary.main', mr: 1 }} fontSize="small" />
+                          <Typography variant="body2">
+                            {office.email}
+                          </Typography>
+                        </Box>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                          <AccessTimeIcon sx={{ color: 'primary.main', mr: 1 }} fontSize="small" />
+                          <Typography variant="body2">
+                            {office.hours}
+                          </Typography>
+                        </Box>
+                      </Grid>
+                    </Grid>
+                  </CardContent>
+                </Card>
+              ))}
+            </Stack>
+            
+            <Box sx={{ mt: 5 }}>
+              <Typography variant="h6" gutterBottom>
+                Customer Support
+              </Typography>
+              <Typography variant="body1" sx={{ mb: 1 }}>
+                <strong>Email:</strong> support@domadesign.com
+              </Typography>
+              <Typography variant="body1" sx={{ mb: 1 }}>
+                <strong>Phone:</strong> 1-800-555-1234
+              </Typography>
+              <Typography variant="body1">
+                <strong>Hours:</strong> Monday-Friday, 8AM-8PM EST
+              </Typography>
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
+
+      <Divider sx={{ my: 8 }} />
+
+      <Box sx={{ textAlign: 'center', mb: 6 }}>
+        <Typography variant="h5" gutterBottom>
+          Looking for Something Specific?
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 4, maxWidth: 800, mx: 'auto' }}>
+          Visit our comprehensive support center or view our product catalog to find answers to frequently asked questions.
+        </Typography>
+        <Box sx={{ display: 'flex', gap: 3, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <Button 
+            variant="contained" 
+            color="primary" 
+            component={Link}
+            href="/support"
+          >
+            Visit Support Center
+          </Button>
+          <Button 
+            variant="outlined" 
+            component={Link}
+            href="/products"
+          >
+            Browse Products
+          </Button>
+        </Box>
+      </Box>
+
+      {/* Success Snackbar */}
+      <Snackbar open={submitSuccess} autoHideDuration={6000} onClose={handleSuccessClose}>
+        <Alert onClose={handleSuccessClose} severity="success" sx={{ width: '100%' }}>
+          Your message has been sent successfully! We'll be in touch soon.
+        </Alert>
+      </Snackbar>
+
+      {/* Error Snackbar */}
+      <Snackbar open={submitError} autoHideDuration={6000} onClose={handleErrorClose}>
+        <Alert onClose={handleErrorClose} severity="error" sx={{ width: '100%' }}>
+          There was an error sending your message. Please try again.
+        </Alert>
+      </Snackbar>
+    </Container>
   );
 } 

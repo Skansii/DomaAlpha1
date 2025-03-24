@@ -1,119 +1,109 @@
-# Doma Design - Kitchen & Cabinet Solutions
+# DOMA Design Application
 
-A modern web application for Doma Design, a company specializing in kitchen design and cabinet solutions. This application allows users to explore design options, request quotes, and manage their projects.
+Modern web application for DOMA Design, a kitchen and cabinet design company.
 
 ## Features
 
-- Responsive design optimized for all devices
-- User authentication system with secure login/signup
-- Interactive dashboard for registered users
-- Contact form for inquiries and quote requests
-- Service catalog with detailed information
-- Clean, modern UI built with Tailwind CSS
-
-## Tech Stack
-
-- **Framework**: Next.js 14 (App Router)
-- **Styling**: Tailwind CSS
-- **State Management**: React Context API
-- **Authentication**: JWT-based authentication (simulated in the demo version)
-- **Architecture**: MVC pattern with service objects for business logic
+- Public website with product catalog and company information
+- Authenticated user dashboard for clients
+- Project tracking and management
+- 3D rendering visualization
+- File uploads and document management
+- Price offers and quotes
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 18.x or later
-- npm or yarn
+- Node.js 18+ (recommended: Node.js 20)
+- npm 9+ or yarn
+- Supabase account for authentication (free tier works fine)
 
 ### Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/doma-design.git
-   cd doma-design
-   ```
+```bash
+# Install dependencies
+npm install
 
-2. Install dependencies:
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+# Set up Supabase authentication
+npm run setup-auth
+```
 
-3. Create environment variables:
-   ```bash
-   cp .env.example .env.local
-   ```
-   Then edit `.env.local` with your specific configuration.
+### Authentication Setup
 
-4. Run the development server:
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
+This application uses Supabase for authentication. Follow these steps to set up authentication:
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+1. Create a Supabase account at [https://supabase.com](https://supabase.com) if you don't have one
+2. Create a new project in Supabase
+3. Navigate to Project Settings > API to get your project URL and anon key
+4. Run `npm run setup-auth` and enter these credentials
+5. Enable Email/Password authentication in Supabase (Auth > Providers)
+6. Configure any other auth settings as needed (confirmation emails, OAuth providers, etc.)
+
+The user dashboard is protected and only accessible to authenticated users.
+
+### Development
+
+```bash
+# Start the development server
+npm run dev
+
+# Or use the dashboard script for a fresh start
+./start-dashboard.sh
+```
+
+The application will be available at:
+- Main website: http://localhost:3000
+- User dashboard: http://localhost:3000/user-dashboard (requires authentication)
+- Login: http://localhost:3000/login
+- Sign up: http://localhost:3000/signup
 
 ## Project Structure
 
 ```
-├── public/            # Static assets
-├── src/
-│   ├── app/           # App router pages
-│   ├── components/    # Reusable UI components
-│   ├── context/       # React context providers
-│   ├── services/      # Business logic services
-│   └── styles/        # Global styles
-├── .env.example       # Example environment variables
-├── .gitignore         # Git ignore file
-├── next.config.js     # Next.js configuration
-├── package.json       # Project dependencies
-├── README.md          # Project documentation
-└── tailwind.config.js # Tailwind CSS configuration
+doma-app/
+├── public/              # Static files
+│   ├── images/          # Image assets
+│   │   └── ...
+├── src/                 # Source code
+│   ├── app/             # Next.js app router
+│   │   ├── user-dashboard/  # Dashboard pages
+│   │   │   ├── layout.tsx   # Dashboard layout
+│   │   │   ├── page.tsx     # Dashboard home
+│   │   │   └── ...          # Dashboard sub-pages
+│   │   └── ...          # Public website pages
+│   ├── components/      # React components
+│   │   ├── dashboard/   # Dashboard components
+│   │   │   ├── LeftSidebar.tsx
+│   │   │   ├── MainContent.tsx
+│   │   │   └── RightSidebar.tsx
+│   │   ├── Header.tsx   # Main site header
+│   │   ├── Footer.tsx   # Main site footer
+│   │   └── ...
+│   └── ...
+├── package.json         # Dependencies and scripts
+└── next.config.js       # Next.js configuration
 ```
 
-## Development Guidelines
+## Important Notes
 
-- Follow the MVC architecture
-- Use service objects for business logic
-- Adhere to TypeScript type safety
-- Enforce test coverage minimums (coming soon)
-- Add new environment variables to `.env.example`
+- Always run the server from the `doma-app` directory to ensure correct path resolution
+- Use relative imports (e.g., `../components/Header`) rather than path aliases (`@/components/Header`)
+- The dashboard uses Material UI components while the public site uses Tailwind CSS
 
-## Demo Credentials
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-For testing purposes, you can use the following demo credentials:
+## Learn More
 
-- **Email**: demo@example.com
-- **Password**: password123
+To learn more about Next.js, take a look at the following resources:
 
-## Deployment
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-This application can be deployed to Vercel with minimal configuration:
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-```bash
-npm run build
-# or
-yarn build
-```
+## Deploy on Vercel
 
-## Contributing
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgements
-
-- [Next.js](https://nextjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [React](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/) 
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

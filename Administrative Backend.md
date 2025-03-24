@@ -1,7 +1,14 @@
 # Doma Design – Administrative Backend
 
-This document outlines the structure and purpose of the **Administrative Backend** for the **Doma Design SaaS** platform. The backend is designed for internal management of users, products, projects, content, files, and analytics, ensuring smooth operation and oversight of the entire system.
-Doma Design SaaS Use modern Tailwind UI Component 
+> **Important Note to Developer:**  
+> This admin dashboard should be created **separately** from the main Doma Design user-facing app.  
+> - Normal users will continue signing in through **Supabase**.  
+> - This admin panel should **reuse the same Tailwind UI design system** but **must not alter or interfere** with any files in the main codebase.  
+> - You may use the registered **MongoDB** instance for data storage, if needed.  
+> - **Do not add any buttons or links** pointing to the admin dashboard from the regular user interface.  
+> - Access to the admin panel should only be via the direct link: **`/mypage/admin`**.  
+> - Implement an **appropriate design** aligned with the overall Doma Design aesthetics.  
+> - As a first step, **propose a sample admin component** (e.g., a dashboard card or table layout) with **no functionality yet**, only UI structure.
 
 ---
 

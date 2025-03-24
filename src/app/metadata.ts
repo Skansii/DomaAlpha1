@@ -1,9 +1,9 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Doma Design | Modern Kitchen Solutions",
-  description: "Premium custom kitchen design and manufacturing services with modern aesthetic, high-quality materials, and exceptional craftsmanship.",
+  description: "Custom Kitchen Design and Manufacturing for modern homes and businesses.",
   icons: {
     icon: '/favicon.ico',
-  }
+  },
 }; 

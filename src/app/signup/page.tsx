@@ -2,232 +2,299 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import MaterialButton from '@/components/ui/MaterialButton';
+import { 
+  Box, 
+  Container, 
+  TextField, 
+  Typography, 
+  Alert, 
+  Divider, 
+  Paper,
+  Stack
+} from '@mui/material';
 import { useRouter } from 'next/navigation';
-import AuthService from '@/services/AuthService';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function Signup() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  });
-  
-  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState(false);
-  const [agreeToTerms, setAgreeToTerms] = useState(false);
-  
+  const [success, setSuccess] = useState('');
+  const [loading, setLoading] = useState(false);
+  const { signUp, signInWithGoogle } = useAuth();
   const router = useRouter();
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
     setError('');
+    setSuccess('');
     
-    // Basic validation
-    if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match.');
-      setIsLoading(false);
+    // Validate password match
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
       return;
     }
     
-    if (formData.password.length < 8) {
-      setError('Password must be at least 8 characters long.');
-      setIsLoading(false);
+    // Validate password strength
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters');
       return;
     }
     
-    if (!agreeToTerms) {
-      setError('You must agree to the Terms of Service and Privacy Policy.');
-      setIsLoading(false);
-      return;
-    }
+    setLoading(true);
     
     try {
-      // Register the user
-      const response = await AuthService.signup({
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        password: formData.password
-      });
+      const { success, error } = await signUp(email, password);
       
-      if (response.success) {
-        // Show success message
-        setSuccess(true);
-        
-        // Reset form
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          password: '',
-          confirmPassword: ''
-        });
+      if (success) {
+        setSuccess('Account created successfully! You can now log in.');
+        // Clear form
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
+        // Redirect to login after 2 seconds
+        setTimeout(() => router.push('/login'), 2000);
       } else {
-        setError(response.error || 'Registration failed. Please try again.');
+        setError(error || 'Failed to create account. Please try again.');
       }
-    } catch (err) {
-      setError('An unexpected error occurred. Please try again.');
-      console.error('Signup error:', err);
+    } catch (err: any) {
+      setError(err.message || 'An unexpected error occurred');
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
   return (
-    <div className="container mx-auto py-12">
-      <div className="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-        <div className="px-6 py-8">
-          <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">
-            Create Your Account
-          </h2>
-          
-          {success ? (
-            <div className="text-center">
-              <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded mb-6">
-                Your account has been created successfully! Please check your email to verify your account.
-              </div>
-              <Link 
-                href="/login" 
-                className="inline-block px-6 py-3 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-colors"
-              >
-                Go to Login
+    <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+      {/* Left side - Image */}
+      <Box 
+        sx={{ 
+          display: { xs: 'none', md: 'flex' },
+          width: '50%', 
+          position: 'relative',
+          bgcolor: 'grey.900'
+        }}
+      >
+        <Box
+          component="img"
+          src="https://images.pexels.com/photos/6492403/pexels-photo-6492403.jpeg"
+          alt="Modern kitchen interior"
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover'
+          }}
+        />
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            bgcolor: 'rgba(0,0,0,0.5)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            color: 'white',
+            p: 6
+          }}
+        >
+          <Typography variant="h2" component="h2" fontWeight={700} mb={3}>
+            Join Doma Design
+          </Typography>
+          <Typography variant="h5" textAlign="center" sx={{ maxWidth: 500 }}>
+            Start your journey to a beautifully designed space
+          </Typography>
+        </Box>
+      </Box>
+      
+      {/* Right side - Signup form */}
+      <Box 
+        sx={{ 
+          width: { xs: '100%', md: '50%' }, 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center',
+          p: 4,
+          bgcolor: 'background.paper'
+        }}
+      >
+        <Container maxWidth="sm">
+          <Paper 
+            elevation={0} 
+            sx={{ 
+              p: { xs: 3, sm: 6 },
+              borderRadius: 3
+            }}
+          >
+            <Box sx={{ textAlign: 'center', mb: 5 }}>
+              <Link href="/" style={{ display: 'inline-block' }}>
+                <Image 
+                  src="/images/doma_2_Balken_rot.png" 
+                  alt="DOMA DESIGN Logo" 
+                  width={180} 
+                  height={60}
+                  style={{ height: '60px', width: 'auto', marginBottom: '16px' }}
+                />
               </Link>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit}>
-              {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-4">
-                  {error}
-                </div>
-              )}
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label htmlFor="firstName" className="block text-gray-700 mb-2">First Name</label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
-                    required
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="lastName" className="block text-gray-700 mb-2">Last Name</label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
-                    required
-                  />
-                </div>
-              </div>
-              
-              <div className="mb-4">
-                <label htmlFor="email" className="block text-gray-700 mb-2">Email Address</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
-                  placeholder="you@example.com"
-                  required
-                />
-              </div>
-              
-              <div className="mb-4">
-                <label htmlFor="password" className="block text-gray-700 mb-2">Password</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
-                  placeholder="••••••••"
-                  required
-                />
-                <p className="mt-1 text-sm text-gray-500">Password must be at least 8 characters</p>
-              </div>
-              
-              <div className="mb-6">
-                <label htmlFor="confirmPassword" className="block text-gray-700 mb-2">Confirm Password</label>
-                <input
-                  type="password"
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
-                  placeholder="••••••••"
-                  required
-                />
-              </div>
-              
-              <div className="mb-6">
-                <label className="flex items-center">
-                  <input
-                    type="checkbox"
-                    checked={agreeToTerms}
-                    onChange={(e) => setAgreeToTerms(e.target.checked)}
-                    className="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
-                    required
-                  />
-                  <span className="ml-2 text-gray-700">
-                    I agree to the{' '}
-                    <Link href="/terms" className="text-red-600 hover:text-red-700">
-                      Terms of Service
-                    </Link>
-                    {' '}and{' '}
-                    <Link href="/privacy" className="text-red-600 hover:text-red-700">
-                      Privacy Policy
-                    </Link>
-                  </span>
-                </label>
-              </div>
-              
-              <div className="mb-6">
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full px-6 py-3 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-colors disabled:bg-red-400"
+              <Typography variant="h4" component="h1" fontWeight={700} gutterBottom>
+                Create your account
+              </Typography>
+              <Typography variant="body1" color="text.secondary">
+                Already have an account?{' '}
+                <Link 
+                  href="/login" 
+                  style={{ 
+                    color: 'var(--mui-palette-primary-main)',
+                    textDecoration: 'none',
+                    fontWeight: 500
+                  }}
                 >
-                  {isLoading ? 'Creating Account...' : 'Create Account'}
-                </button>
-              </div>
-            </form>
-          )}
-          
-          <div className="text-center">
-            <p className="text-gray-600">
-              Already have an account?{' '}
-              <Link href="/login" className="text-red-600 hover:text-red-700 font-medium">
-                Log in
-              </Link>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+                  Sign in
+                </Link>
+              </Typography>
+            </Box>
+            
+            {error && (
+              <Alert severity="error" sx={{ mb: 3 }}>
+                {error}
+              </Alert>
+            )}
+            
+            {success && (
+              <Alert severity="success" sx={{ mb: 3 }}>
+                {success}
+              </Alert>
+            )}
+            
+            <Box component="form" onSubmit={handleSubmit} noValidate>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                sx={{ mb: 3 }}
+              />
+              
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                sx={{ mb: 3 }}
+              />
+              
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="confirmPassword"
+                label="Confirm Password"
+                type="password"
+                id="confirmPassword"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                sx={{ mb: 3 }}
+              />
+              
+              <MaterialButton
+                type="submit"
+                disabled={loading}
+                loading={loading}
+                variant="contained"
+                color="primary"
+                fullWidth
+                size="large"
+                sx={{ py: 1.5, mb: 2 }}
+              >
+                {loading ? 'Creating account...' : 'Create account'}
+              </MaterialButton>
+              
+              <Typography variant="body2" color="text.secondary" align="center">
+                By signing up, you agree to our{' '}
+                <Link 
+                  href="/terms" 
+                  style={{ 
+                    color: 'var(--mui-palette-primary-main)', 
+                    textDecoration: 'none' 
+                  }}
+                >
+                  Terms of Service
+                </Link>
+                {' '}and{' '}
+                <Link 
+                  href="/privacy" 
+                  style={{ 
+                    color: 'var(--mui-palette-primary-main)', 
+                    textDecoration: 'none' 
+                  }}
+                >
+                  Privacy Policy
+                </Link>
+              </Typography>
+            </Box>
+            
+            <Divider sx={{ my: 4 }}>
+              <Typography variant="body2" color="text.secondary">
+                OR
+              </Typography>
+            </Divider>
+            
+            <Stack spacing={2} direction="column">
+              <MaterialButton
+                variant="outlined"
+                color="primary"
+                fullWidth
+                onClick={() => {
+                  setLoading(true);
+                  signInWithGoogle()
+                    .then(({ success, error }) => {
+                      if (!success && error) {
+                        setError(error);
+                      }
+                      // If successful, the function initiates a redirect, so no need to handle success case here
+                    })
+                    .catch((err) => {
+                      setError(err.message || 'Failed to initialize Google sign-up');
+                    })
+                    .finally(() => {
+                      setLoading(false);
+                    });
+                }}
+                startIcon={
+                  <svg viewBox="0 0 24 24" width="24" height="24" style={{ marginRight: 8 }}>
+                    <path
+                      fill="currentColor"
+                      d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"
+                    />
+                  </svg>
+                }
+              >
+                Sign up with Google
+              </MaterialButton>
+            </Stack>
+          </Paper>
+        </Container>
+      </Box>
+    </Box>
   );
 } 

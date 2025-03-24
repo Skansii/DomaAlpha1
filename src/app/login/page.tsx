@@ -2,143 +2,282 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import MaterialButton from '@/components/ui/MaterialButton';
+import { 
+  Box, 
+  Container, 
+  TextField, 
+  Typography, 
+  Alert, 
+  Checkbox, 
+  FormControlLabel, 
+  Divider,
+  Paper,
+  Stack
+} from '@mui/material';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/context/AuthContext';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  
+  const { signIn, signInWithGoogle } = useAuth();
   const router = useRouter();
-  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
     setError('');
     
+    if (!email || !password) {
+      setError('Please enter both email and password');
+      return;
+    }
+    
+    setLoading(true);
+    
     try {
-      // Basic validation
-      if (email === '' || password === '') {
-        setError('Please enter both email and password.');
-        setIsLoading(false);
-        return;
-      }
+      const { success, error } = await signIn(email, password);
       
-      // Use the login function from AuthContext
-      const result = await login(email, password);
-      
-      if (result.success) {
-        // Redirect to home page or dashboard
-        router.push('/');
+      if (success) {
+        // Redirect to dashboard on successful login
+        router.push('/user-dashboard');
       } else {
-        // For demo purposes, provide a hint
-        if (email !== 'demo@example.com') {
-          setError('Try using demo@example.com with password: password123');
-        } else {
-          setError(result.error || 'Login failed. Please check your credentials.');
-        }
+        setError(error || 'Failed to sign in. Please check your credentials.');
       }
-    } catch (err) {
-      setError('An unexpected error occurred. Please try again.');
-      console.error('Login error:', err);
+    } catch (err: any) {
+      setError(err.message || 'An unexpected error occurred');
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
   return (
-    <div className="container mx-auto py-12">
-      <div className="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-        <div className="px-6 py-8">
-          <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">
-            Login to Your Account
-          </h2>
-          
-          {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-4">
-              {error}
-            </div>
-          )}
-          
-          <form onSubmit={handleSubmit}>
-            <div className="mb-6">
-              <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
-                Email Address
-              </label>
-              <input
-                type="email"
+    <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+      {/* Left side - Image */}
+      <Box 
+        sx={{ 
+          display: { xs: 'none', md: 'flex' },
+          width: '50%', 
+          position: 'relative',
+          bgcolor: 'grey.900'
+        }}
+      >
+        <Box
+          component="img"
+          src="https://images.pexels.com/photos/6489118/pexels-photo-6489118.jpeg"
+          alt="Modern kitchen interior"
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover'
+          }}
+        />
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            bgcolor: 'rgba(0,0,0,0.5)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            color: 'white',
+            p: 6
+          }}
+        >
+          <Typography variant="h2" component="h2" fontWeight={700} mb={3}>
+            Welcome to Doma Design
+          </Typography>
+          <Typography variant="h5" textAlign="center" sx={{ maxWidth: 500 }}>
+            Transform your space with premium kitchen and cabinet solutions
+          </Typography>
+        </Box>
+      </Box>
+      
+      {/* Right side - Login form */}
+      <Box 
+        sx={{ 
+          width: { xs: '100%', md: '50%' }, 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center',
+          p: 4,
+          bgcolor: 'background.paper'
+        }}
+      >
+        <Container maxWidth="sm">
+          <Paper 
+            elevation={0} 
+            sx={{ 
+              p: { xs: 3, sm: 6 },
+              borderRadius: 3
+            }}
+          >
+            <Box sx={{ textAlign: 'center', mb: 5 }}>
+              <Link href="/" style={{ display: 'inline-block' }}>
+                <Image 
+                  src="/images/doma_2_Balken_rot.png" 
+                  alt="DOMA DESIGN Logo" 
+                  width={180} 
+                  height={60}
+                  style={{ height: '60px', width: 'auto', marginBottom: '16px' }}
+                />
+              </Link>
+              <Typography variant="h4" component="h1" fontWeight={700} gutterBottom>
+                Sign in to your account
+              </Typography>
+              <Typography variant="body1" color="text.secondary">
+                Or{' '}
+                <Link 
+                  href="/signup" 
+                  style={{ 
+                    color: 'var(--mui-palette-primary-main)',
+                    textDecoration: 'none',
+                    fontWeight: 500
+                  }}
+                >
+                  create a new account
+                </Link>
+              </Typography>
+            </Box>
+            
+            {error && (
+              <Alert severity="error" sx={{ mb: 3 }}>
+                {error}
+              </Alert>
+            )}
+            
+            <Box component="form" onSubmit={handleSubmit} noValidate>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
                 id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
-                placeholder="you@example.com"
-                required
+                sx={{ mb: 3 }}
               />
-            </div>
-            
-            <div className="mb-6">
-              <div className="flex items-center justify-between mb-2">
-                <label htmlFor="password" className="block text-gray-700 font-medium">
-                  Password
-                </label>
-                <Link href="/forgot-password" className="text-sm text-red-600 hover:text-red-700">
-                  Forgot password?
-                </Link>
-              </div>
-              <input
+              
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
                 type="password"
                 id="password"
+                autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
-                placeholder="••••••••"
-                required
+                sx={{ mb: 3 }}
               />
-            </div>
-            
-            <div className="mb-6">
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                  className="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+              
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+                <FormControlLabel
+                  control={<Checkbox value="remember" color="primary" />}
+                  label="Remember me"
                 />
-                <span className="ml-2 text-gray-700">Remember me</span>
-              </label>
-            </div>
-            
-            <div className="mb-6">
-              <button
+                
+                <Link 
+                  href="#" 
+                  style={{ 
+                    color: 'var(--mui-palette-primary-main)',
+                    textDecoration: 'none',
+                    fontSize: '0.875rem',
+                    fontWeight: 500
+                  }}
+                >
+                  Forgot password?
+                </Link>
+              </Box>
+              
+              <MaterialButton
                 type="submit"
-                disabled={isLoading}
-                className="w-full px-6 py-3 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-colors disabled:bg-red-400"
+                disabled={loading}
+                loading={loading}
+                variant="contained"
+                color="primary"
+                fullWidth
+                size="large"
               >
-                {isLoading ? 'Logging in...' : 'Log In'}
-              </button>
-            </div>
-          </form>
-          
-          <div className="text-center">
-            <p className="text-gray-600">
-              Don't have an account?{' '}
-              <Link href="/signup" className="text-red-600 hover:text-red-700 font-medium">
-                Sign up
+                {loading ? 'Signing in...' : 'Sign in'}
+              </MaterialButton>
+            </Box>
+            
+            <Divider sx={{ my: 4 }}>
+              <Typography variant="body2" color="text.secondary">
+                OR
+              </Typography>
+            </Divider>
+            
+            <Stack spacing={2} direction="column">
+              <MaterialButton
+                variant="outlined"
+                color="primary"
+                fullWidth
+                onClick={() => {
+                  setLoading(true);
+                  signInWithGoogle()
+                    .then(({ success, error }) => {
+                      if (!success && error) {
+                        setError(error);
+                      }
+                      // If successful, the function initiates a redirect, so no need to handle success case here
+                    })
+                    .catch((err) => {
+                      setError(err.message || 'Failed to initialize Google sign-in');
+                    })
+                    .finally(() => {
+                      setLoading(false);
+                    });
+                }}
+                startIcon={
+                  <svg viewBox="0 0 24 24" width="24" height="24" style={{ marginRight: 8 }}>
+                    <path
+                      fill="currentColor"
+                      d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"
+                    />
+                  </svg>
+                }
+              >
+                Sign in with Google
+              </MaterialButton>
+            </Stack>
+            
+            <Typography 
+              variant="body2" 
+              color="text.secondary" 
+              align="center" 
+              sx={{ mt: 4 }}
+            >
+              Not a member?{' '}
+              <Link 
+                href="/signup" 
+                style={{ 
+                  color: 'var(--mui-palette-primary-main)', 
+                  textDecoration: 'none',
+                  fontWeight: 500 
+                }}
+              >
+                Sign up now
               </Link>
-            </p>
-          </div>
-          
-          <div className="mt-4 text-center">
-            <p className="text-sm text-gray-500">
-              Demo credentials: demo@example.com / password123
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+            </Typography>
+          </Paper>
+        </Container>
+      </Box>
+    </Box>
   );
 } 

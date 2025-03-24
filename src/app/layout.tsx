@@ -2,11 +2,11 @@
 
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import ThemeRegistry from '../components/ThemeRegistry';
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
+import ThemeRegistry from '../components/ui/theme/ThemeRegistry';
 import { usePathname } from 'next/navigation';
-import { metadata } from './metadata';
+import { AuthProvider } from '@/contexts/AuthContext';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,9 +21,6 @@ export default function RootLayout({
 }>) {
   const pathname = usePathname();
   const isUserDashboard = pathname?.startsWith('/user-dashboard');
-  const isAdminDashboard = pathname?.startsWith('/mypage/admin');
-  const shouldShowFooter = !isUserDashboard && !isAdminDashboard;
-  const shouldShowHeader = !isAdminDashboard;
 
   return (
     <html lang="en" className="h-full scroll-smooth">
@@ -31,15 +28,15 @@ export default function RootLayout({
         <ThemeRegistry>
           <AuthProvider>
             <div className="flex min-h-screen flex-col">
-              {shouldShowHeader && <Header />}
-              <main className={`flex-grow ${isAdminDashboard ? 'p-0' : ''}`}>
+              <Header />
+              <main className="flex-grow">
                 {children}
               </main>
-              {shouldShowFooter && <Footer />}
+              {!isUserDashboard && <Footer />}
             </div>
           </AuthProvider>
         </ThemeRegistry>
       </body>
     </html>
   );
-} 
+}
